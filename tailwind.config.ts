@@ -62,14 +62,20 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				pure: {
-					white: 'hsl(var(--pure-white))',
-					black: 'hsl(var(--pure-black))',
+				performance: {
+					red: 'hsl(var(--performance-red))',
+					orange: 'hsl(var(--performance-orange))',
+					blue: 'hsl(var(--performance-blue))',
 				},
-				gray: {
-					dark: 'hsl(var(--dark-gray))',
-					medium: 'hsl(var(--medium-gray))',
-					light: 'hsl(var(--light-gray))',
+				carbon: {
+					black: 'hsl(var(--carbon-black))',
+					gray: 'hsl(var(--carbon-gray))',
+				},
+				steel: {
+					gray: 'hsl(var(--steel-gray))',
+				},
+				chrome: {
+					white: 'hsl(var(--chrome-white))',
 				}
 			},
 			backgroundImage: {
@@ -128,10 +134,10 @@ export default {
 				},
 				'glow': {
 					'0%, 100%': {
-						boxShadow: '0 0 20px hsl(var(--pure-white) / 0.1)'
+						boxShadow: '0 0 20px hsl(var(--performance-red) / 0.3)'
 					},
 					'50%': {
-						boxShadow: '0 0 40px hsl(var(--pure-white) / 0.2)'
+						boxShadow: '0 0 40px hsl(var(--performance-red) / 0.6)'
 					}
 				},
 				'float': {
