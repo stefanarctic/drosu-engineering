@@ -18,11 +18,11 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-foreground rounded-lg flex items-center justify-center">
-              <span className="text-background font-bold text-xl">DE</span>
+            <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
+              <span className="text-chrome-white font-bold text-xl">PM</span>
             </div>
             <div className="text-xl font-bold text-foreground">
-              DROSU<span className="text-muted-foreground"> Engineering</span>
+              Performance<span className="text-performance-red">Motors</span>
             </div>
           </div>
 
@@ -32,17 +32,17 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-muted-foreground transition-colors duration-300 relative group"
+                className="text-foreground hover:text-performance-red transition-colors duration-300 relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-muted-foreground transition-all duration-300 group-hover:w-full"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-performance-red transition-all duration-300 group-hover:w-full"></span>
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="outline" size="default">
+            <Button variant="performance" size="default">
               Programează Consultanță
             </Button>
           </div>
@@ -64,13 +64,13 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-muted-foreground transition-colors duration-300"
+                  className="text-foreground hover:text-performance-red transition-colors duration-300"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button variant="outline" size="default" className="mt-4">
+              <Button variant="performance" size="default" className="mt-4">
                 Programează Consultanță
               </Button>
             </nav>
