@@ -1,4 +1,5 @@
 import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import drosuLogo from "../assets/drosu-logo.png";
 
 const Footer = () => {
   const services = [
@@ -20,13 +21,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-chrome-white font-bold text-xl">PM</span>
-              </div>
-              <div className="text-xl font-bold text-chrome-white">
-                Performance<span className="text-performance-red">Motors</span>
-              </div>
+            <div className="flex items-center space-x-3 mb-6">
+              <img 
+                src={drosuLogo} 
+                alt="DROSU Engineering Logo" 
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-steel-gray mb-6">
               Specializați în modificări de performanță și optimizarea vehiculelor. 
@@ -90,7 +90,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-performance-red" />
-                <span className="text-steel-gray">contact@performancemotors.ro</span>
+                <span className="text-steel-gray">contact@drosuengineering.ro</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-performance-red" />
@@ -102,7 +102,7 @@ const Footer = () => {
 
         <div className="border-t border-carbon-gray mt-12 pt-8 text-center">
           <p className="text-steel-gray">
-            © 2024 Performance Motors. Toate drepturile rezervate.
+            © 2024 DROSU Engineering. Toate drepturile rezervate.
           </p>
         </div>
       </div>

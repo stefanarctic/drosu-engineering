@@ -44,7 +44,7 @@ const About = () => {
               <span className="text-performance-red"> Performanță</span>
             </h2>
             <p className="text-xl text-steel-gray mb-8">
-              Cu peste 10 ani de experiență în industria automotive, Performance Motors 
+              Cu peste 10 ani de experiență în industria automotive, DROSU Engineering 
               s-a stabilit ca lider în modificările de performanță și optimizarea vehiculelor.
             </p>
             
