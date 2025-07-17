@@ -24,6 +24,9 @@ const Header = () => {
               alt="DROSU Engineering Logo" 
               className="h-12 w-auto"
             />
+            <div className="text-xl font-bold text-foreground">
+              DROSU<span className="text-performance-red">Engineering</span>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
