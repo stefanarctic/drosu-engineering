@@ -13,6 +13,19 @@ const Header = () => {
     { name: "Contact", href: "#contact" },
   ];
 
+  const handleNavClick = (href: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    document.getElementById(targetId)?.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  };
+
+  const handleMobileNavClick = (href: string, e: React.MouseEvent) => {
+    handleNavClick(href, e);
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-6 py-4">
@@ -35,7 +48,8 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-performance-red transition-colors duration-300 relative group"
+                className="text-foreground hover:text-performance-red transition-colors duration-300 relative group cursor-pointer"
+                onClick={(e) => handleNavClick(item.href, e)}
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-performance-red transition-all duration-300 group-hover:w-full"></span>
@@ -45,7 +59,15 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button variant="performance" size="default">
+            <Button 
+              variant="performance" 
+              size="default"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
               Programează Consultanță
             </Button>
           </div>
@@ -67,13 +89,23 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-performance-red transition-colors duration-300"
-                  onClick={() => setIsMenuOpen(false)}
+                  className="text-foreground hover:text-performance-red transition-colors duration-300 cursor-pointer"
+                  onClick={(e) => handleMobileNavClick(item.href, e)}
                 >
                   {item.name}
                 </a>
               ))}
-              <Button variant="performance" size="default" className="mt-4">
+              <Button 
+                variant="performance" 
+                size="default" 
+                className="mt-4"
+                onClick={() => {
+                  document.getElementById('contact')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                  setIsMenuOpen(false);
+                }}
+              >
                 Programează Consultanță
               </Button>
             </nav>

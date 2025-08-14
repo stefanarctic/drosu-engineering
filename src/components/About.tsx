@@ -1,6 +1,8 @@
 import { Award, Users, Clock, Star } from "lucide-react";
 import workshopImage from "@/assets/workshop-interior.jpg";
 import engineImage from "@/assets/engine-performance.jpg";
+// import workshopImage from "@/assets/garaj.png";
+// import engineImage from "@/assets/engine.png";
 
 const About = () => {
   const stats = [

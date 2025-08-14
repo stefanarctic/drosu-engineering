@@ -34,12 +34,30 @@ const Hero = () => {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-12">
-            <Button variant="hero" size="xl" className="group">
+            <Button 
+              variant="hero" 
+              size="xl" 
+              className="group"
+              onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
               Consultanță Gratuită
               <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
             </Button>
-            <Button variant="outline" size="xl" className="border-chrome-white text-chrome-white hover:bg-chrome-white hover:text-carbon-black">
-              Vedere Servicii
+            <Button 
+              variant="outline" 
+              size="xl" 
+              className="border-chrome-white text-chrome-white hover:bg-chrome-white hover:text-carbon-black"
+              onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ 
+                  behavior: 'smooth' 
+                });
+              }}
+            >
+              Vezi Serviciile Noastre
             </Button>
           </div>
 

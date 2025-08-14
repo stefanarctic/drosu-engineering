@@ -87,7 +87,7 @@ const Footer = () => {
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-performance-red" />
-                <span className="text-steel-gray">+40 722 123 456</span>
+                <span className="text-steel-gray">0726 960 376</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-performance-red" />
@@ -95,7 +95,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-performance-red" />
-                <span className="text-steel-gray">Str. Performanței 123, București</span>
+                <span className="text-steel-gray">Strada Bujorului 5, Râmnicu Vâlcea</span>
               </div>
             </div>
           </div>
@@ -103,7 +103,7 @@ const Footer = () => {
 
         <div className="border-t border-carbon-gray mt-12 pt-8 text-center">
           <p className="text-steel-gray">
-            © 2024 DROSU Engineering. Toate drepturile rezervate.
+            © {new Date().getFullYear()} DROSU Engineering. Toate drepturile rezervate.
           </p>
         </div>
       </div>

@@ -111,7 +111,15 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-16">
-          <Button variant="performance" size="xl">
+          <Button 
+            variant="performance" 
+            size="xl"
+            onClick={() => {
+              document.getElementById('contact')?.scrollIntoView({ 
+                behavior: 'smooth' 
+              });
+            }}
+          >
             Solicită Ofertă Personalizată
           </Button>
         </div>
