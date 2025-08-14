@@ -1,6 +1,7 @@
 import { ArrowRight, Zap, Settings, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
-import heroImage from "@/assets/hero-car.jpg";
+// import heroImage from "@/assets/hero-car.jpg";
+import heroImage from "@/assets/poze_concurs_musetesti/IMG_1365.jpg";
 
 const Hero = () => {
   return (
