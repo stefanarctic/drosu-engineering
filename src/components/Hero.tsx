@@ -1,16 +1,30 @@
 import { ArrowRight, Zap, Settings, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
-// import heroImage from "@/assets/hero-car.jpg";
 import heroImage from "@/assets/poze_concurs_musetesti/IMG_1365.jpg";
+import heroVideo from "@/assets/poze_concurs_musetesti/DrosuEngineeringMusetesti.mp4";
 
 const Hero = () => {
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
-      <div 
+      {/* <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
+      </div> */}
+
+      {/* Background Video */}
+      <div className="absolute inset-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src={heroVideo} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
       </div>
 
