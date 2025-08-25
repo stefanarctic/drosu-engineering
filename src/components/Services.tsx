@@ -13,25 +13,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 const Services = () => {
   const services = [
     {
-      icon: <Cpu className="w-8 h-8" />,
-      title: "Remapare ECU",
-      description: "Optimizarea sistemului de management al motorului pentru performanță maximă și eficiență sporită.",
-      features: ["Creștere putere 20-40%", "Reducere consum", "Eliminare limitări"],
-      price: "de la 800 RON"
-    },
-    {
       icon: <Wrench className="w-8 h-8" />,
       title: "Modificări Hardware",
       description: "Instalarea și configurarea pieselor de performanță pentru upgrade-uri complete.",
-      features: ["Turbo/Supercharger", "Admisie sport", "Evacuare performanță"],
+      features: ["Admisie sport", "Intercooler performant", "Evacuare performanță"],
       price: "de la 1500 RON"
-    },
-    {
-      icon: <Gauge className="w-8 h-8" />,
-      title: "Testare Dyno",
-      description: "Măsurarea precisă a performanței vehiculului pe bancul nostru de testare.",
-      features: ["Putere & cuplu", "Analiză detaliată", "Înainte/după modificări"],
-      price: "de la 300 RON"
     },
     {
       icon: <Car className="w-8 h-8" />,
@@ -41,11 +27,11 @@ const Services = () => {
       price: "de la 2000 RON"
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Optimizare Transmisie",
-      description: "Îmbunătățirea răspunsului și performanței cutiei de viteze.",
-      features: ["Recalibrare TCU", "Schimbări rapide", "Sport mode"],
-      price: "de la 600 RON"
+      icon: <Gauge className="w-8 h-8" />,
+      title: "Optimizare Aerodinamică",
+      description: "Optimizarea aerodinamică a vehiculului pentru stabilitate la viteze înalte și consum redus.",
+      features: ["Splitter", "Spoiler", "Diffuser"],
+      price: "de la 1200 RON"
     },
     {
       icon: <Settings2 className="w-8 h-8" />,
@@ -58,7 +44,7 @@ const Services = () => {
 
   return (
     <section id="services" className="py-20 bg-gradient-to-b from-background to-carbon-gray">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-6 xl:max-w-[1320px] 2xl:max-w-[1500px]">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
             Serviciile Noastre
@@ -68,27 +54,28 @@ const Services = () => {
             <span className="text-performance-red"> Performanță</span>
           </h2>
           <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            De la optimizări software la modificări hardware complexe, oferim servicii complete 
-            pentru maximizarea potențialului vehiculului tău.
+            De la modificări hardware complexe la modificări aerodinamice, oferim servicii complete 
+            pentru maximizarea potențialului automobilelor de strada și de curse. 
+            Experiența noastră în motorsport ne permite să oferim servicii de calitate superioară în Râmnicu Vâlcea, Județul Vâlcea.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-performance group">
-              <CardHeader>
-                <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:animate-glow">
+            <Card key={index} className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-performance group w-full max-w-[420px] md:max-w-none flex flex-col h-full">
+              <CardHeader className="text-center md:text-left">
+                <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:animate-glow mx-auto md:mx-0">
                   {service.icon}
                 </div>
                 <CardTitle className="text-xl font-bold text-chrome-white mb-2">
                   {service.title}
                 </CardTitle>
               </CardHeader>
-              <CardContent>
+              <CardContent className="flex flex-col h-full text-center md:text-left">
                 <p className="text-steel-gray mb-4">
                   {service.description}
                 </p>
-                <ul className="space-y-2 mb-6">
+                <ul className="space-y-2 mb-6 mx-auto md:mx-0 w-fit">
                   {service.features.map((feature, idx) => (
                     <li key={idx} className="flex items-center text-sm text-steel-gray">
                       <div className="w-2 h-2 bg-performance-red rounded-full mr-3"></div>
@@ -96,7 +83,7 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-center gap-4 md:justify-between mt-auto">
                   <span className="text-performance-orange font-bold text-lg">
                     {service.price}
                   </span>

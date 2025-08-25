@@ -7,15 +7,15 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
-      {/* <div 
+      <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
-      </div> */}
+      </div>
 
       {/* Background Video */}
-      <div className="absolute inset-0">
+      {/* <div className="absolute inset-0">
         <video
           autoPlay
           loop
@@ -26,15 +26,15 @@ const Hero = () => {
           <source src={heroVideo} type="video/mp4" />
         </video>
         <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative container mx-auto px-6 min-h-screen flex items-center">
         <div className="max-w-3xl animate-fade-in">
           <div className="mb-6">
-            <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
+            {/* <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
               Atelier de Performanță Auto
-            </span>
+            </span> */}
             <h1 className="text-5xl md:text-7xl font-bold text-chrome-white mb-6 leading-tight">
               Eliberează
               <span className="text-performance-red"> Puterea</span>
@@ -42,8 +42,7 @@ const Hero = () => {
               Mașinii Tale
             </h1>
             <p className="text-xl text-steel-gray mb-8 max-w-2xl">
-              Specializați în modificări de performanță, remapare ECU și optimizări complete pentru vehiculele tale. 
-              Peste 10 ani de experiență în industria automotive.
+              Specializați în modificări de performanță pentru mașini de strada și de curse.
             </p>
           </div>
 
@@ -76,7 +75,7 @@ const Hero = () => {
           </div>
 
           {/* Performance Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="flex items-center space-x-3">
               <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center">
                 <Zap className="w-6 h-6 text-chrome-white" />
@@ -104,7 +103,7 @@ const Hero = () => {
                 <div className="text-steel-gray">Ani Experiență</div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -1,8 +1,8 @@
 import { Award, Users, Clock, Star } from "lucide-react";
-import workshopImage from "@/assets/workshop-interior.jpg";
-import engineImage from "@/assets/engine-performance.jpg";
-// import workshopImage from "@/assets/garaj.png";
-// import engineImage from "@/assets/engine.png";
+// import workshopImage from "@/assets/workshop-interior.jpg";
+// import engineImage from "@/assets/engine-performance.jpg";
+import workshopImage from "@/assets/garaj.png";
+import engineImage from "@/assets/engine.png";
 
 const About = () => {
   const stats = [
@@ -46,8 +46,9 @@ const About = () => {
               <span className="text-performance-red"> Performanță</span>
             </h2>
             <p className="text-xl text-steel-gray mb-8">
-              Cu peste 10 ani de experiență în industria automotive, DROSU Engineering 
-              s-a stabilit ca lider în modificările de performanță și optimizarea vehiculelor.
+              DROSU Engineering este specializat în modificări de performanță pentru mașini de strada și de curse. 
+              Pasiunea noastră pentru inginerie și atenția la detalii ne permite să oferim servicii de calitate superioară 
+              în Râmnicu Vâlcea, Județul Vâlcea, transformând fiecare automobil într-o mașină de performanță.
             </p>
             
             <div className="space-y-6 mb-8">
@@ -98,7 +99,7 @@ const About = () => {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className={`${stat.color} text-3xl font-bold mb-2`}>
@@ -109,7 +110,7 @@ const About = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Images */}

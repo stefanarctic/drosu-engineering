@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Index from "./pages/Index";
+import Kits from "./pages/Kits";
+import KitDetails from "./pages/KitDetails";
 import NotFound from "./pages/NotFound";
 import Analytics from "./components/Analytics";
 
@@ -19,6 +21,8 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/kituri" element={<Kits />} />
+            <Route path="/piese/kit-admisie" element={<KitDetails />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

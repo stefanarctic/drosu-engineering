@@ -12,20 +12,22 @@ interface SEOProps {
   modifiedTime?: string;
   section?: string;
   tags?: string[];
+  isLocalBusiness?: boolean;
 }
 
 const SEO: React.FC<SEOProps> = ({
-  title = "DROSU Engineering - Atelier Performanță Auto | Remapare ECU & Modificări",
-  description = "Specialiști în remapare ECU, modificări performanță și optimizări auto. Peste 10 ani experiență, 500+ vehicule optimizate. Consultanță gratuită în București.",
-  keywords = "remapare ecu, modificări performanță, tuning auto, optimizare motor, dyno test, suspensie sport, atelier auto bucurești, drosu engineering",
-  image = "https://drosuengineering.com/og-image.jpg",
-  url = "https://drosuengineering.com",
+  title = "DROSU Engineering - Atelier Performanță Auto | Modificări & Optimizări",
+  description = "Specialiști în modificări de performanță și optimizări auto. Peste 10 ani experiență, 500+ vehicule optimizate. Consultanță gratuită în București.",
+  keywords = "modificări performanță, tuning auto, optimizare motor, suspensie sport, atelier auto bucurești, drosu engineering",
+  image = "https://www.drosuengineering.com/og-image.jpg",
+  url = "https://www.drosuengineering.com",
   type = "website",
   author = "DROSU Engineering",
   publishedTime,
   modifiedTime,
   section,
-  tags = []
+  tags = [],
+  isLocalBusiness = true
 }) => {
   const siteName = "DROSU Engineering";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
@@ -38,6 +40,9 @@ const SEO: React.FC<SEOProps> = ({
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
       <meta name="author" content={author} />
+      <meta name="robots" content="index, follow" />
+      <meta name="language" content="Romanian" />
+      <meta name="revisit-after" content="7 days" />
       
       {/* Canonical URL */}
       <link rel="canonical" href={url} />
@@ -69,11 +74,126 @@ const SEO: React.FC<SEOProps> = ({
         <meta key={index} property="article:tag" content={tag} />
       ))}
       
-      {/* JSON-LD Structured Data */}
+      {/* Local Business Schema */}
+      {isLocalBusiness && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AutoRepair",
+            "name": "DROSU Engineering",
+            "description": "Specialiști în modificări performanță și optimizări auto",
+            "url": "https://www.drosuengineering.com",
+            "telephone": "+40-XXX-XXX-XXX",
+            "address": {
+              "@type": "PostalAddress",
+              "streetAddress": "Strada Exemplu, Nr. 123",
+              "addressLocality": "București",
+              "addressRegion": "București",
+              "postalCode": "000000",
+              "addressCountry": "RO"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": 44.4268,
+              "longitude": 26.1025
+            },
+            "openingHoursSpecification": [
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "18:00"
+              },
+              {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "09:00",
+                "closes": "14:00"
+              }
+            ],
+            "priceRange": "$$",
+            "currenciesAccepted": "RON, EUR",
+            "paymentAccepted": "Cash, Credit Card, Bank Transfer",
+            "areaServed": {
+              "@type": "Country",
+              "name": "Romania"
+            },
+            "serviceArea": {
+              "@type": "GeoCircle",
+              "geoMidpoint": {
+                "@type": "GeoCoordinates",
+                "latitude": 44.4268,
+                "longitude": 26.1025
+              },
+              "geoRadius": "50000"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Servicii Auto",
+              "itemListElement": [
+                
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Modificări Performanță",
+                    "description": "Upgrade-uri pentru performanță superioară"
+                  }
+                },
+                
+              ]
+            },
+            "sameAs": [
+              "https://www.facebook.com/drosuengineering",
+              "https://www.instagram.com/drosuengineering"
+            ],
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.drosuengineering.com/src/assets/drosu-logo.png"
+            },
+            "image": "https://www.drosuengineering.com/src/assets/workshop-interior.jpg",
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.8",
+              "reviewCount": "127"
+            }
+          })}
+        </script>
+      )}
+      
+      {/* Organization Schema */}
       <script type="application/ld+json">
         {JSON.stringify({
           "@context": "https://schema.org",
-          "@type": type === "article" ? "Article" : "WebPage",
+          "@type": "Organization",
+          "name": "DROSU Engineering",
+          "url": "https://www.drosuengineering.com",
+          "logo": "https://www.drosuengineering.com/src/assets/drosu-logo.png",
+          "description": "Specialiști în modificări performanță și optimizări auto",
+          "foundingDate": "2014",
+          "numberOfEmployees": "5-10",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+40-XXX-XXX-XXX",
+            "contactType": "customer service",
+            "availableLanguage": ["Romanian", "English"]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Strada Exemplu, Nr. 123",
+            "addressLocality": "București",
+            "addressRegion": "București",
+            "postalCode": "000000",
+            "addressCountry": "RO"
+          }
+        })}
+      </script>
+      
+      {/* WebPage Schema */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
           "headline": fullTitle,
           "description": description,
           "image": image,
@@ -85,10 +205,10 @@ const SEO: React.FC<SEOProps> = ({
           "publisher": {
             "@type": "Organization",
             "name": siteName,
-                         "logo": {
-               "@type": "ImageObject",
-               "url": "https://drosuengineering.com/src/assets/drosu-logo.png"
-             }
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.drosuengineering.com/src/assets/drosu-logo.png"
+            }
           },
           "mainEntityOfPage": {
             "@type": "WebPage",

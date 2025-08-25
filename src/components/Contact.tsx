@@ -60,7 +60,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      info: "contact@drosuengineering.com",
+      info: "drosuengineering@gmail.com",
       color: "text-performance-orange"
     },
     {
@@ -90,7 +90,7 @@ const Contact = () => {
           </h2>
           <p className="text-xl text-steel-gray max-w-3xl mx-auto">
             Contactează-ne pentru o consultanță gratuită și să îți arătăm cum putem 
-            transforma vehiculul tău într-o mașină de performanță.
+            transforma vehiculul tău într-o mașină de performanță prin modificări hardware pentru strada și curse.
           </p>
         </div>
 

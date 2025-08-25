@@ -3,11 +3,9 @@ import drosuLogo from "../assets/drosu-logo.png";
 
 const Footer = () => {
   const services = [
-    "Remapare ECU",
     "Modificări Hardware",
-    "Testare Dyno",
     "Suspensie Sport",
-    "Optimizare Transmisie",
+    "Optimizare Aerodinamică",
     "Mentenanță Specializată"
   ];
 
@@ -30,14 +28,14 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-steel-gray mb-6">
-              Specializați în modificări de performanță și optimizarea vehiculelor. 
+              Specializați în modificări de performanță și optimizarea automobilelor. 
               Transformăm pasiunea ta în putere.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
                 <Facebook className="w-5 h-5 text-chrome-white" />
               </a>
-              <a href="#" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
+              <a href="https://www.instagram.com/drosu.engineering" target="_blank" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
                 <Instagram className="w-5 h-5 text-chrome-white" />
               </a>
               <a href="#" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
@@ -91,7 +89,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-performance-red" />
-                <span className="text-steel-gray">contact@drosuengineering.ro</span>
+                <span className="text-steel-gray">drosuengineering@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-performance-red" />
