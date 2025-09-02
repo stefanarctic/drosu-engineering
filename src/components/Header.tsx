@@ -9,13 +9,21 @@ const Header = () => {
   const navItems = [
     { name: "Acasă", href: "#home" },
     { name: "Servicii", href: "#services" },
-    { name: "Piese", href: "#parts" },
+    { name: "Piese", href: "/piese" },
     { name: "Despre Noi", href: "#about" },
     { name: "Contact", href: "#contact" },
   ];
 
   const handleNavClick = (href: string, e: React.MouseEvent) => {
     e.preventDefault();
+    
+    // If it's an external link (starts with /), navigate to it
+    if (href.startsWith('/')) {
+      window.location.href = href;
+      return;
+    }
+    
+    // Otherwise, scroll to section
     const targetId = href.replace('#', '');
     document.getElementById(targetId)?.scrollIntoView({ 
       behavior: 'smooth' 

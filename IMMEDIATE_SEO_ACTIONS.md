@@ -1,4 +1,4 @@
-# 🚀 IMMEDIATE SEO ACTIONS - DROSU Engineering
+# 🚀 UPDATED SEO ACTIONS - DROSU Engineering (Râmnicu Vâlcea)
 
 ## ⚡ **DO THESE TODAY (Priority 1)**
 
@@ -13,39 +13,45 @@
 ### **2. Google My Business Setup**
 - [ ] Go to [https://business.google.com](https://business.google.com)
 - [ ] Create business listing: "DROSU Engineering"
-- [ ] Category: "Auto Repair Shop"
-- [ ] Add your **actual address** in București
-- [ ] Add your **actual phone number**
-- [ ] Add business hours
-- [ ] Add business description
+- [ ] Category: "Auto Repair Shop" / "Auto Performance Shop"
+- [ ] Add your **actual address**: Strada Bujorului 5, Râmnicu Vâlcea
+- [ ] Add your **actual phone number**: 0726 960 376
+- [ ] Add business hours: Lun-Vin: 8:00-18:00
+- [ ] Add business description: "Specialiști în modificări de performanță pentru mașini de strada și de curse"
 - [ ] Upload 10+ workshop photos
 
-### **3. Update Business Information**
-- [ ] **Replace placeholder data** in SEO component with your actual:
-  - Phone number
-  - Street address
-  - Business hours
-  - Services offered
+### **3. Fix Location Data in SEO Schema**
+- [x] **COMPLETED**: Updated location from București to Râmnicu Vâlcea
+- [x] **COMPLETED**: Updated contact information with real data
+- [ ] **TODO**: Update coordinates for Râmnicu Vâlcea (45.1101785, 24.3673623)
+- [ ] **TODO**: Update service area radius for Vâlcea region
 
 ## 🔧 **DO THESE THIS WEEK (Priority 2)**
 
-### **4. Content Creation**
-- [ ] Write first blog post: "Ghid Complet Remapare ECU"
-- [ ] Create service detail pages for each service
+### **4. Content Creation & New Pages**
+- [x] **COMPLETED**: Created Parts pages (/piese, /piese/kit-admisie)
+- [x] **COMPLETED**: Restructured as main parts catalog with kit admisie as first product
+- [ ] Write first blog post: "Ghid Complet Modificări Hardware Auto"
+- [ ] Create service detail pages for each service (Hardware, Suspensie, Aerodinamică, Mentenanță)
 - [ ] Add customer testimonials to website
-- [ ] Create before/after case studies
+- [ ] Create before/after case studies with photos
+- [ ] Add more product pages for other parts (exhaust, suspension, etc.)
 
 ### **5. Technical SEO**
 - [ ] Install new packages: `npm install`
 - [ ] Generate new sitemap: `npm run sitemap:generate`
 - [ ] Check page speed: `npm run seo:check`
 - [ ] Fix any technical issues found
+- [ ] **NEW**: Optimize new Parts pages for search engines
+- [ ] **NEW**: Add structured data for products (Product schema)
+- [ ] **NEW**: Create individual product pages for each part type
 
-### **6. Local SEO**
-- [ ] Add business to local directories
+### **6. Local SEO (Updated for Râmnicu Vâlcea)**
+- [ ] Add business to local directories (Vâlcea region)
 - [ ] Create Facebook Business page
-- [ ] Join local automotive forums
-- [ ] Partner with local car dealerships
+- [ ] Join local automotive forums (Vâlcea, Oltenia)
+- [ ] Partner with local car dealerships in Râmnicu Vâlcea
+- [ ] **NEW**: Target Vâlcea county keywords
 
 ## 📊 **DO THESE THIS MONTH (Priority 3)**
 
@@ -67,20 +73,34 @@
 - [ ] Join automotive associations
 - [ ] Create shareable infographics
 
-## 🎯 **KEYWORDS TO TARGET**
+## 🎯 **KEYWORDS TO TARGET (UPDATED)**
 
-### **Primary (București)**
-- "remapare ecu bucurești"
-- "tuning auto bucurești"
-- "atelier performanță bucurești"
-- "modificări auto bucurești"
-- "dyno test bucurești"
+### **Primary (Râmnicu Vâlcea & Vâlcea)**
+- "modificări performanță râmnicu vâlcea"
+- "tuning auto râmnicu vâlcea"
+- "atelier performanță râmnicu vâlcea"
+- "modificări hardware râmnicu vâlcea"
+- "piese performanță râmnicu vâlcea"
+- "kit admisie râmnicu vâlcea"
+- "suspensie sport râmnicu vâlcea"
+- "drosu engineering valcea"
 
-### **Secondary (România)**
-- "remapare ecu românia"
+### **Secondary (Vâlcea County & Oltenia)**
+- "modificări performanță valcea"
+- "tuning auto valcea"
+- "atelier performanță valcea"
+- "modificări auto valcea"
+- "piese performanță valcea"
+- "kit admisie valcea"
+- "suspensie sport valcea"
+
+### **Tertiary (România)**
+- "modificări performanță românia"
 - "tuning auto românia"
 - "atelier performanță românia"
-- "modificări auto românia"
+- "modificări hardware românia"
+- "piese performanță românia"
+- "kit admisie românia"
 
 ## 📱 **SOCIAL MEDIA STRATEGY**
 
@@ -127,20 +147,41 @@
 - Better search rankings
 - More customer conversions
 
-## 🚨 **IMMEDIATE NEXT STEPS**
+## 🚨 **IMMEDIATE NEXT STEPS (UPDATED)**
 
 1. **RIGHT NOW**: Set up Google Search Console
 2. **TODAY**: Get verification tag and share with me
-3. **THIS WEEK**: Set up Google My Business
-4. **THIS MONTH**: Start content creation
+3. **THIS WEEK**: Set up Google My Business with Râmnicu Vâlcea location
+4. **THIS MONTH**: Start content creation and optimize new Kit pages
 
-## 💡 **PRO TIPS**
+## 💡 **PRO TIPS (UPDATED)**
 
 - **Consistency is key** - Post content regularly
-- **Local focus** - Emphasize București presence
+- **Local focus** - Emphasize Râmnicu Vâlcea and Vâlcea county presence
 - **Customer reviews** - Encourage and respond to all
 - **Mobile first** - Ensure excellent mobile experience
 - **Speed matters** - Keep page load times under 3 seconds
+- **Product pages** - Optimize Kit pages for product searches
+- **Local partnerships** - Connect with Vâlcea automotive community
+
+## 🔄 **WHAT'S CHANGED SINCE LAST UPDATE**
+
+### **✅ COMPLETED IMPROVEMENTS**
+- [x] Updated business location from București to Râmnicu Vâlcea
+- [x] Added real contact information (phone, address, hours)
+- [x] Created new Parts pages (/piese, /piese/kit-admisie)
+- [x] Restructured as main parts catalog with kit admisie as first product
+- [x] Improved product presentation with detailed specifications
+- [x] Added proper SEO meta tags for new pages
+- [x] Updated navigation to point to /piese instead of /kituri
+
+### **🆕 NEW OPPORTUNITIES**
+- [ ] Target Vâlcea county keywords (less competition than București)
+- [ ] Create product-specific landing pages for each part type
+- [ ] Add structured data for products (Product schema)
+- [ ] Build local partnerships in Vâlcea region
+- [ ] Create content about motorsport experience
+- [ ] Expand parts catalog with more products (exhaust, suspension, etc.)
 
 ---
 

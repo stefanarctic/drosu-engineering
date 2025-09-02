@@ -5,8 +5,12 @@
  * Automatically generates sitemap.xml with current date
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const BASE_URL = 'https://www.drosuengineering.com';
 const CURRENT_DATE = new Date().toISOString().split('T')[0];
@@ -61,10 +65,16 @@ const pages = [
     priority: '0.7'
   },
   {
-    loc: '/#atelier-bucuresti',
+    loc: '/piese',
     lastmod: CURRENT_DATE,
     changefreq: 'monthly',
     priority: '0.8'
+  },
+  {
+    loc: '/piese/kit-admisie',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.7'
   }
 ];
 
@@ -128,4 +138,4 @@ if (process.argv.includes('--add')) {
   generateSitemap();
 }
 
-module.exports = { generateSitemap, addPage };
+export { generateSitemap, addPage };

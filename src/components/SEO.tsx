@@ -83,19 +83,19 @@ const SEO: React.FC<SEOProps> = ({
             "name": "DROSU Engineering",
             "description": "Specialiști în modificări performanță și optimizări auto",
             "url": "https://www.drosuengineering.com",
-            "telephone": "+40-XXX-XXX-XXX",
+            "telephone": "+40-726-960-376",
             "address": {
               "@type": "PostalAddress",
-              "streetAddress": "Strada Exemplu, Nr. 123",
-              "addressLocality": "București",
-              "addressRegion": "București",
-              "postalCode": "000000",
+              "streetAddress": "Strada Bujorului 5",
+              "addressLocality": "Râmnicu Vâlcea",
+              "addressRegion": "Vâlcea",
+              "postalCode": "240000",
               "addressCountry": "RO"
             },
             "geo": {
               "@type": "GeoCoordinates",
-              "latitude": 44.4268,
-              "longitude": 26.1025
+              "latitude": 45.1101785,
+              "longitude": 24.3673623
             },
             "openingHoursSpecification": [
               {
@@ -122,8 +122,8 @@ const SEO: React.FC<SEOProps> = ({
               "@type": "GeoCircle",
               "geoMidpoint": {
                 "@type": "GeoCoordinates",
-                "latitude": 44.4268,
-                "longitude": 26.1025
+                "latitude": 45.1101785,
+                "longitude": 24.3673623
               },
               "geoRadius": "50000"
             },
@@ -174,16 +174,16 @@ const SEO: React.FC<SEOProps> = ({
           "numberOfEmployees": "5-10",
           "contactPoint": {
             "@type": "ContactPoint",
-            "telephone": "+40-XXX-XXX-XXX",
+            "telephone": "+40-726-960-376",
             "contactType": "customer service",
             "availableLanguage": ["Romanian", "English"]
           },
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "Strada Exemplu, Nr. 123",
-            "addressLocality": "București",
-            "addressRegion": "București",
-            "postalCode": "000000",
+            "streetAddress": "Strada Bujorului 5",
+            "addressLocality": "Râmnicu Vâlcea",
+            "addressRegion": "Vâlcea",
+            "postalCode": "240000",
             "addressCountry": "RO"
           }
         })}

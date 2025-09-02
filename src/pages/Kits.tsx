@@ -16,12 +16,12 @@ const Kits = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Kituri Admisie - Detalii | DROSU Engineering"
-        description="Vezi detalii pentru kiturile de admisie: imagini, beneficii și opțiuni."
-        keywords="kit admisie, admisie sport, piese performanță"
+        title="Piese Performanță Auto - DROSU Engineering"
+        description="Descoperă gama completă de piese de performanță pentru mașini: kituri admisie, evacuare, suspensie și multe altele. Calitate superioară și instalare profesionistă."
+        keywords="piese performanță auto, kit admisie, evacuare sport, suspensie sport, piese tuning, drosu engineering"
         image="https://www.drosuengineering.com/src/assets/kituri/kit_admisie1.jpg"
-        url="https://www.drosuengineering.com/kituri"
-        tags={["kit admisie", "admisie sport", "piese performanță"]}
+        url="https://www.drosuengineering.com/piese"
+        tags={["piese performanță", "kit admisie", "evacuare sport", "suspensie sport", "piese tuning"]}
         isLocalBusiness={true}
       />
       <Header />
@@ -36,33 +36,86 @@ const Kits = () => {
 
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
-              Kituri Admisie
+              Piese Performanță
             </span>
             <h1 className="text-4xl md:text-5xl font-bold text-chrome-white mb-4">
-              Detalii & Galerie
+              Gama Completă de Piese
             </h1>
             <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-              Kiturile de admisie îmbunătățesc fluxul de aer, accelerația și sunetul,
-              oferind un răspuns mai prompt al motorului și potențial de putere sporit.
+              Descoperă gama noastră de piese de performanță pentru mașini de strada și de curse.
+              De la kituri de admisie la sisteme de evacuare și suspensie sport.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="w-full overflow-hidden rounded-lg aspect-[4/3]">
-              <img src={intake1} alt="Kit admisie - imagine 1" className="w-full h-full object-cover" />
+          {/* Products Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {/* Kit Admisie */}
+            <div className="bg-card border border-carbon-gray rounded-lg overflow-hidden hover:border-performance-red transition-all duration-300 group">
+              <div className="aspect-[4/3] overflow-hidden">
+                <img src={intake1} alt="Kit Admisie Sport" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-chrome-white mb-2">Kit Admisie Sport</h3>
+                <p className="text-steel-gray mb-4">Îmbunătățește fluxul de aer și răspunsul motorului</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-performance-orange font-bold">de la 450 RON</span>
+                  <Link to="/piese/kit-admisie" className="text-performance-red hover:text-chrome-white transition-colors">
+                    Vezi detalii →
+                  </Link>
+                </div>
+              </div>
             </div>
-            <div className="w-full overflow-hidden rounded-lg aspect-[4/3]">
-              <img src={intake2} alt="Kit admisie - imagine 2" className="w-full h-full object-cover" />
+
+            {/* Coming Soon - Kit Evacuare */}
+            <div className="bg-card border border-carbon-gray rounded-lg overflow-hidden opacity-60">
+              <div className="aspect-[4/3] bg-gradient-to-br from-carbon-gray to-carbon-black flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-performance-red/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-performance-red text-2xl">🔧</span>
+                  </div>
+                  <h4 className="text-chrome-white font-semibold">Kit Evacuare</h4>
+                  <p className="text-steel-gray text-sm">În curând</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-chrome-white mb-2">Kit Evacuare Sport</h3>
+                <p className="text-steel-gray mb-4">Sistem complet de evacuare pentru performanță maximă</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-steel-gray">În dezvoltare</span>
+                  <span className="text-steel-gray">Curând</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Coming Soon - Suspensie Sport */}
+            <div className="bg-card border border-carbon-gray rounded-lg overflow-hidden opacity-60">
+              <div className="aspect-[4/3] bg-gradient-to-br from-carbon-gray to-carbon-black flex items-center justify-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-performance-red/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-performance-red text-2xl">⚙️</span>
+                  </div>
+                  <h4 className="text-chrome-white font-semibold">Suspensie Sport</h4>
+                  <p className="text-steel-gray text-sm">În curând</p>
+                </div>
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-bold text-chrome-white mb-2">Suspensie Sport</h3>
+                <p className="text-steel-gray mb-4">Arcuri și amortizoare pentru handling superior</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-steel-gray">În dezvoltare</span>
+                  <span className="text-steel-gray">Curând</span>
+                </div>
+              </div>
             </div>
           </div>
 
           <div className="text-steel-gray space-y-4 mb-12">
-            <h2 className="text-2xl font-semibold text-chrome-white text-center">Beneficii</h2>
+            <h2 className="text-2xl font-semibold text-chrome-white text-center">De ce să alegi piesele noastre?</h2>
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Flux de aer mai rece și stabil</li>
-              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Creștere de putere</li>
-              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Sunet plăcut, sportiv</li>
-              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Montaj profesionist în atelier</li>
+              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Calitate superioară și durabilitate</li>
+              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Instalare profesionistă în atelier</li>
+              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Garanție completă pentru toate piesele</li>
+              <li className="flex items-start"><span className="w-2 h-2 bg-performance-red rounded-full mt-2 mr-3"></span>Testare și verificare post-instalare</li>
             </ul>
           </div>
 

@@ -191,8 +191,8 @@ const KitDetails = () => {
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
               <Button variant="outline" size="xl" asChild>
-                <Link to="/kituri">
-                  Vezi Toate Kiturile
+                <Link to="/piese">
+                  Vezi Toate Piesele
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
