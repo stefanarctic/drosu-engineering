@@ -1,8 +1,8 @@
 import { Award, Users, Clock, Star } from "lucide-react";
-// import workshopImage from "@/assets/workshop-interior.jpg";
-// import engineImage from "@/assets/engine-performance.jpg";
-import workshopImage from "@/assets/garaj.png";
-import engineImage from "@/assets/engine.png";
+import drosuWinImage from "@/assets/Drosu_Engineering_Win2.jpg";
+// Old imports - commented out
+// import workshopImage from "@/assets/garaj.png";
+// import engineImage from "@/assets/engine.png";
 
 const About = () => {
   const stats = [
@@ -115,6 +115,22 @@ const About = () => {
 
           {/* Images */}
           <div className="space-y-6">
+            {/* New single portrait image */}
+            <div className="relative overflow-hidden rounded-lg">
+              <img 
+                src={drosuWinImage} 
+                alt="Drosu Engineering Win" 
+                className="w-5/6 h-[36rem] object-cover hover:scale-105 transition-transform duration-300 mx-auto md:mx-0"
+                style={{ boxShadow: 'rgba(0, 0, 0, 0.5) 0px 5px 15px' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/60 to-transparent"></div>
+              {/* <div className="absolute bottom-4 left-4 text-chrome-white">
+                <h4 className="text-lg font-semibold">Drosu Engineering</h4>
+                <p className="text-steel-gray">Performanță și excelență</p>
+              </div> */}
+            </div>
+
+            {/* Old code - commented out
             <div className="relative overflow-hidden rounded-lg">
               <img 
                 src={workshopImage} 
@@ -140,6 +156,7 @@ const About = () => {
                 <p className="text-steel-gray">Atenție la detalii</p>
               </div>
             </div>
+            */}
           </div>
         </div>
       </div>
