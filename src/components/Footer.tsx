@@ -1,5 +1,6 @@
-import { Facebook, Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Youtube, Mail, Phone, MapPin } from "lucide-react";
 import drosuLogo from "../assets/drosu-logo.png";
+import WhatsAppIcon from "./ui/whatsapp-icon";
 
 const Footer = () => {
   const services = [
@@ -32,13 +33,13 @@ const Footer = () => {
               Transformăm pasiunea ta în putere.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
-                <Facebook className="w-5 h-5 text-chrome-white" />
+              <a href="https://wa.me/40726960376" target="_blank" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
+                <WhatsAppIcon className="w-5 h-5 text-chrome-white" />
               </a>
               <a href="https://www.instagram.com/drosu.engineering" target="_blank" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
                 <Instagram className="w-5 h-5 text-chrome-white" />
               </a>
-              <a href="#" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
+              <a href="https://youtube.com/@drosu.engineering" className="w-10 h-10 bg-carbon-gray rounded-lg flex items-center justify-center hover:bg-performance-red transition-colors">
                 <Youtube className="w-5 h-5 text-chrome-white" />
               </a>
             </div>
