@@ -23,58 +23,16 @@ const pages = [
     priority: '1.0'
   },
   {
-    loc: '/#services',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.9'
-  },
-  {
-    loc: '/#about',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.8'
-  },
-  {
-    loc: '/#contact',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.9'
-  },
-  {
-    loc: '/#remapare-ecu',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.8'
-  },
-  {
-    loc: '/#modificari-performanta',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.8'
-  },
-  {
-    loc: '/#dyno-test',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.8'
-  },
-  {
-    loc: '/#suspensie-sport',
-    lastmod: CURRENT_DATE,
-    changefreq: 'monthly',
-    priority: '0.7'
-  },
-  {
     loc: '/piese',
     lastmod: CURRENT_DATE,
     changefreq: 'monthly',
-    priority: '0.8'
+    priority: '0.9'
   },
   {
     loc: '/piese/kit-admisie',
     lastmod: CURRENT_DATE,
     changefreq: 'monthly',
-    priority: '0.7'
+    priority: '0.8'
   },
   {
     loc: '/servicii/modificari-hardware',

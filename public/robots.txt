@@ -7,25 +7,9 @@ Sitemap: https://www.drosuengineering.com/sitemap.xml
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
 
-# Allow important resources
-Allow: /src/assets/
-Allow: /public/
-Allow: /components/
-Allow: /pages/
-
 # Disallow admin or private areas (if any)
 Disallow: /admin/
 Disallow: /private/
 Disallow: /api/
 Disallow: /node_modules/
 Disallow: /.git/
-
-# Allow search engines to crawl all content
-Allow: /#services
-Allow: /#about
-Allow: /#contact
-Allow: /#remapare-ecu
-Allow: /#modificari-performanta
-Allow: /#dyno-test
-Allow: /#suspensie-sport
-Allow: /#atelier-bucuresti
