@@ -75,6 +75,18 @@ const pages = [
     lastmod: CURRENT_DATE,
     changefreq: 'monthly',
     priority: '0.7'
+  },
+  {
+    loc: '/servicii/modificari-hardware',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.9'
+  },
+  {
+    loc: '/blog/ce-modificari-pot-face',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.8'
   }
 ];
 

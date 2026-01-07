@@ -2,6 +2,7 @@ import { ArrowRight, Zap, Settings, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/poze_concurs_musetesti/IMG_1365.jpg";
 import heroVideo from "@/assets/poze_concurs_musetesti/DrosuEngineeringMusetesti.mp4";
+import { trackEvent } from "./Analytics";
 
 const Hero = () => {
   return (
@@ -35,23 +36,28 @@ const Hero = () => {
             {/* <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
               Atelier de Performanță Auto
             </span> */}
-            <h1 className="text-5xl md:text-7xl font-bold text-chrome-white mb-6 leading-tight">
-              Eliberează
-              <span className="text-performance-red"> Puterea</span>
+            <h1 className="text-5xl md:text-7xl font-bold text-chrome-white mb-6 mt-4 leading-tight">
+              Tuning Auto
+              <span className="text-performance-red"> Valcea</span>
               <br />
-              Mașinii Tale
+              Performanță Maximă
             </h1>
             <p className="text-xl text-steel-gray mb-8 max-w-2xl">
-              Specializați în modificări de performanță pentru mașini de strada și de curse.
+              Transformăm mașinile tale în mașini de performanță. Modificări hardware profesionale pentru strada și curse în Râmnicu Vâlcea.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 mt-10">
             <Button 
               variant="hero" 
               size="xl" 
               className="group"
               onClick={() => {
+                trackEvent('cta_click', {
+                  cta_text: 'Consultanță Gratuită',
+                  cta_location: 'hero_section',
+                  cta_type: 'primary'
+                });
                 document.getElementById('contact')?.scrollIntoView({ 
                   behavior: 'smooth' 
                 });
@@ -65,6 +71,11 @@ const Hero = () => {
               size="xl" 
               className="border-chrome-white text-chrome-white hover:bg-chrome-white hover:text-carbon-black"
               onClick={() => {
+                trackEvent('cta_click', {
+                  cta_text: 'Vezi Serviciile Noastre',
+                  cta_location: 'hero_section',
+                  cta_type: 'secondary'
+                });
                 document.getElementById('services')?.scrollIntoView({ 
                   behavior: 'smooth' 
                 });

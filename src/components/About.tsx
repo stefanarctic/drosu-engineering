@@ -42,13 +42,13 @@ const About = () => {
               Despre Noi
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-chrome-white mb-6">
-              Pasiune pentru
-              <span className="text-performance-red"> Performanță</span>
+              Atelier Performanță Auto
+              <span className="text-performance-red"> Râmnicu Vâlcea</span>
             </h2>
             <p className="text-xl text-steel-gray mb-8">
-              DROSU Engineering este specializat în modificări de performanță pentru mașini de strada și de curse. 
-              Pasiunea noastră pentru inginerie și atenția la detalii ne permite să oferim servicii de calitate superioară 
-              în Râmnicu Vâlcea, Județul Vâlcea, transformând fiecare automobil într-o mașină de performanță.
+              DROSU Engineering este un atelier specializat în modificări de performanță și tuning auto pentru mașini de strada și de curse în Râmnicu Vâlcea, Județul Vâlcea. 
+              Cu experiență în motorsport și atenție la detalii, oferim servicii profesionale de modificări hardware, 
+              transformând fiecare automobil într-o mașină de performanță. Specializați în tuning auto Valcea, modificări performanță și piese performanță.
             </p>
             
             <div className="space-y-6 mb-8">
@@ -119,9 +119,12 @@ const About = () => {
             <div className="relative overflow-hidden rounded-lg">
               <img 
                 src={drosuWinImage} 
-                alt="Drosu Engineering Win" 
+                alt="DROSU Engineering - Echipa și rezultate în motorsport, atelier performanță auto Râmnicu Vâlcea" 
                 className="w-5/6 h-[36rem] object-cover hover:scale-105 transition-transform duration-300 mx-auto md:mx-0"
                 style={{ boxShadow: 'rgba(0, 0, 0, 0.5) 0px 5px 15px' }}
+                loading="lazy"
+                width={600}
+                height={864}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-carbon-black/60 to-transparent"></div>
               {/* <div className="absolute bottom-4 left-4 text-chrome-white">

@@ -4,6 +4,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
+import { trackEvent, trackConversion } from "./Analytics";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,11 +29,26 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
+    // Track form start
+    trackEvent('form_start', {
+      form_name: 'contact_form',
+      form_location: 'contact_section'
+    });
+    
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1500));
     
     // Here you would typically send the form data to your backend
     console.log("Form submitted:", formData);
+    
+    // Track form submission
+    trackEvent('form_submit', {
+      form_name: 'contact_form',
+      form_location: 'contact_section'
+    });
+    
+    // Track conversion
+    trackConversion('contact_form_submission');
     
     setIsSubmitted(true);
     setIsSubmitting(false);
@@ -48,6 +64,24 @@ const Contact = () => {
     
     // Reset success message after 5 seconds
     setTimeout(() => setIsSubmitted(false), 5000);
+  };
+
+  const handlePhoneClick = () => {
+    trackEvent('phone_click', {
+      phone_number: '0726960376',
+      location: 'contact_section'
+    });
+    trackConversion('phone_call');
+    window.location.href = 'tel:+40726960376';
+  };
+
+  const handleEmailClick = () => {
+    trackEvent('email_click', {
+      email: 'drosuengineering@gmail.com',
+      location: 'contact_section'
+    });
+    trackConversion('email_click');
+    window.location.href = 'mailto:drosuengineering@gmail.com';
   };
 
   const contactInfo = [
@@ -99,7 +133,17 @@ const Contact = () => {
           <div className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {contactInfo.map((item, index) => (
-                <Card key={index} className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-glow group">
+                <Card 
+                  key={index} 
+                  className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-glow group cursor-pointer"
+                  onClick={() => {
+                    if (item.title === 'Telefon') {
+                      handlePhoneClick();
+                    } else if (item.title === 'Email') {
+                      handleEmailClick();
+                    }
+                  }}
+                >
                   <CardContent className="p-4">
                     <div className="flex items-center space-x-3">
                       <div className={`w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${

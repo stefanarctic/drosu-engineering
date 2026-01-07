@@ -53,7 +53,14 @@ const PerformanceParts = () => {
               <CardContent className="flex flex-col gap-4 mt-0">
                 {part.image && (
                   <div className="w-full overflow-hidden rounded-lg aspect-[4/3]">
-                    <img src={part.image} alt={part.title} className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500" />
+                    <img 
+                      src={part.image} 
+                      alt={`${part.title} - Piese performanță auto pentru mașini de strada și curse în Râmnicu Vâlcea`} 
+                      className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                      width={480}
+                      height={360}
+                    />
                   </div>
                 )}
                 <p className="text-steel-gray">{part.description}</p>

@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import intake1 from "@/assets/kituri/kit_admisie1.jpg";
@@ -28,11 +29,7 @@ const Kits = () => {
 
       <main className="pt-28 pb-20">
         <section className="container mx-auto px-6 max-w-4xl">
-          <div className="mb-8">
-            <Link to="/" className="inline-flex items-center text-steel-gray hover:text-chrome-white transition-colors" onClick={() => window.scrollTo(0, 0)}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> Înapoi la prima pagină
-            </Link>
-          </div>
+          <Breadcrumbs items={[{ name: "Piese Performanță", url: "/piese" }]} />
 
           <div className="text-center mb-12">
             <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
@@ -52,7 +49,14 @@ const Kits = () => {
             {/* Kit Admisie */}
             <div className="bg-card border border-carbon-gray rounded-lg overflow-hidden hover:border-performance-red transition-all duration-300 group">
               <div className="aspect-[4/3] overflow-hidden">
-                <img src={intake1} alt="Kit Admisie Sport" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <img 
+                  src={intake1} 
+                  alt="Kit Admisie Sport - Filtre performanță și conducte aluminiu pentru tuning auto în Valcea" 
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  width={400}
+                  height={300}
+                />
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-bold text-chrome-white mb-2">Kit Admisie Sport</h3>

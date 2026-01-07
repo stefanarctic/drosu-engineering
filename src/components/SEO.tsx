@@ -13,12 +13,48 @@ interface SEOProps {
   section?: string;
   tags?: string[];
   isLocalBusiness?: boolean;
+  // Product schema props
+  productSchema?: {
+    name: string;
+    description: string;
+    image?: string[];
+    price?: string;
+    priceCurrency?: string;
+    availability?: string;
+    brand?: string;
+    sku?: string;
+    aggregateRating?: {
+      ratingValue: number;
+      reviewCount: number;
+    };
+  };
+  // Service schema props
+  serviceSchema?: {
+    name: string;
+    description: string;
+    serviceType?: string;
+    areaServed?: string;
+    provider?: {
+      name: string;
+      telephone?: string;
+    };
+  };
+  // FAQ schema props
+  faqSchema?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  // Breadcrumb props
+  breadcrumbs?: Array<{
+    name: string;
+    url: string;
+  }>;
 }
 
 const SEO: React.FC<SEOProps> = ({
   title = "DROSU Engineering - Atelier Performanță Auto | Modificări & Optimizări",
-  description = "Specialiști în modificări de performanță și optimizări auto. Peste 10 ani experiență, 500+ vehicule optimizate. Consultanță gratuită în București.",
-  keywords = "modificări performanță, tuning auto, optimizare motor, suspensie sport, atelier auto bucurești, drosu engineering",
+  description = "Specialiști în modificări de performanță și optimizări auto. Peste 10 ani experiență, 500+ vehicule optimizate. Consultanță gratuită în Râmnicu Vâlcea.",
+  keywords = "modificări performanță, tuning auto, optimizare motor, suspensie sport, atelier auto râmnicu vâlcea, drosu engineering valcea",
   image = "https://www.drosuengineering.com/og-image.jpg",
   url = "https://www.drosuengineering.com",
   type = "website",
@@ -27,7 +63,11 @@ const SEO: React.FC<SEOProps> = ({
   modifiedTime,
   section,
   tags = [],
-  isLocalBusiness = true
+  isLocalBusiness = true,
+  productSchema,
+  serviceSchema,
+  faqSchema,
+  breadcrumbs
 }) => {
   const siteName = "DROSU Engineering";
   const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
@@ -220,6 +260,106 @@ const SEO: React.FC<SEOProps> = ({
           "inLanguage": "ro-RO"
         })}
       </script>
+
+      {/* Product Schema */}
+      {productSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            "name": productSchema.name,
+            "description": productSchema.description,
+            "image": productSchema.image || [image],
+            "brand": {
+              "@type": "Brand",
+              "name": productSchema.brand || "DROSU Engineering"
+            },
+            "offers": {
+              "@type": "Offer",
+              "url": url,
+              "priceCurrency": productSchema.priceCurrency || "RON",
+              "price": productSchema.price,
+              "availability": productSchema.availability || "https://schema.org/InStock",
+              "seller": {
+                "@type": "Organization",
+                "name": "DROSU Engineering"
+              }
+            },
+            ...(productSchema.aggregateRating && {
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": productSchema.aggregateRating.ratingValue,
+                "reviewCount": productSchema.aggregateRating.reviewCount
+              }
+            }),
+            ...(productSchema.sku && { "sku": productSchema.sku })
+          })}
+        </script>
+      )}
+
+      {/* Service Schema */}
+      {serviceSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": serviceSchema.name,
+            "description": serviceSchema.description,
+            "serviceType": serviceSchema.serviceType,
+            "provider": {
+              "@type": "LocalBusiness",
+              "name": serviceSchema.provider?.name || "DROSU Engineering",
+              "telephone": serviceSchema.provider?.telephone || "+40-726-960-376",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Strada Bujorului 5",
+                "addressLocality": "Râmnicu Vâlcea",
+                "addressRegion": "Vâlcea",
+                "postalCode": "240000",
+                "addressCountry": "RO"
+              }
+            },
+            "areaServed": {
+              "@type": serviceSchema.areaServed === "Country" ? "Country" : "City",
+              "name": serviceSchema.areaServed || "Râmnicu Vâlcea"
+            }
+          })}
+        </script>
+      )}
+
+      {/* FAQ Schema */}
+      {faqSchema && faqSchema.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqSchema.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })}
+        </script>
+      )}
+
+      {/* Breadcrumb Schema */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": breadcrumbs.map((crumb, index) => ({
+              "@type": "ListItem",
+              "position": index + 1,
+              "name": crumb.name,
+              "item": crumb.url
+            }))
+          })}
+        </script>
+      )}
     </Helmet>
   );
 };

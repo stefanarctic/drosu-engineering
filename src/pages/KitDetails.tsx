@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Zap, Gauge, Wrench } from "lucide-react";
 import intake1 from "@/assets/kituri/kit_admisie1.jpg";
@@ -45,24 +46,47 @@ const KitDetails = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO 
-        title="Kit Admisie Sport - Detalii Complete | DROSU Engineering"
-        description="Kit complet de admisie sport cu filtre de înaltă performanță, conducte aluminiu și instalare profesionistă. Îmbunătățește răspunsul motorului și puterea."
-        keywords="kit admisie sport, filtre performanță, conducte admisie aluminiu, tuning motor"
+        title="Kit Admisie Sport - Prețuri și Montaj | DROSU Engineering Valcea"
+        description="Kit complet de admisie sport cu filtre de înaltă performanță, conducte aluminiu și instalare profesionistă în Râmnicu Vâlcea. Îmbunătățește răspunsul motorului și puterea. Prețuri de la 450 RON."
+        keywords="kit admisie sport, filtre performanță, conducte admisie aluminiu, tuning motor, kit admisie valcea, piese performanță valcea"
         image="https://www.drosuengineering.com/src/assets/kituri/kit_admisie1.jpg"
         url="https://www.drosuengineering.com/piese/kit-admisie"
         tags={["kit admisie", "admisie sport", "piese performanță", "tuning motor"]}
         isLocalBusiness={true}
+        productSchema={{
+          name: "Kit Admisie Sport",
+          description: "Kit complet de admisie sport cu filtre de înaltă performanță, conducte din aluminiu și conuri silicon pentru etanșare. Soluția completă pentru îmbunătățirea performanței motorului prin optimizarea fluxului de aer.",
+          image: [
+            "https://www.drosuengineering.com/src/assets/kituri/kit_admisie1.jpg",
+            "https://www.drosuengineering.com/src/assets/kituri/kit_admisie2.jpg"
+          ],
+          price: "450",
+          priceCurrency: "RON",
+          availability: "https://schema.org/InStock",
+          brand: "DROSU Engineering",
+          sku: "KIT-ADMISIE-001",
+          aggregateRating: {
+            ratingValue: 4.8,
+            reviewCount: 24
+          }
+        }}
+        breadcrumbs={[
+          { name: "Acasă", url: "https://www.drosuengineering.com" },
+          { name: "Piese Performanță", url: "https://www.drosuengineering.com/piese" },
+          { name: "Kit Admisie Sport", url: "https://www.drosuengineering.com/piese/kit-admisie" }
+        ]}
       />
       <Header />
 
       <main className="pt-28 pb-20">
         <div className="container mx-auto px-6 max-w-6xl">
-          {/* Back Navigation */}
-          <div className="mb-8">
-            <Link to="/" className="inline-flex items-center text-steel-gray hover:text-chrome-white transition-colors" onClick={() => window.scrollTo(0, 0)}>
-              <ArrowLeft className="mr-2 h-4 w-4" /> Înapoi la prima pagină
-            </Link>
-          </div>
+          {/* Breadcrumbs */}
+          <Breadcrumbs 
+            items={[
+              { name: "Piese Performanță", url: "/piese" },
+              { name: "Kit Admisie Sport", url: "/piese/kit-admisie" }
+            ]} 
+          />
 
           {/* Header Section */}
           <div className="text-center mb-12">
@@ -82,10 +106,24 @@ const KitDetails = () => {
             {/* Image Gallery */}
             <div className="space-y-6">
               <div className="w-full overflow-hidden rounded-lg aspect-[4/3]">
-                <img src={intake1} alt="Kit admisie - imagine principală" className="w-full h-full object-cover" />
+                <img 
+                  src={intake1} 
+                  alt="Kit admisie sport - filtre performanță și conducte aluminiu pentru mașini de strada și curse" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                />
               </div>
               <div className="w-full overflow-hidden rounded-lg aspect-[4/3]">
-                <img src={intake2} alt="Kit admisie - imagine secundară" className="w-full h-full object-cover" />
+                <img 
+                  src={intake2} 
+                  alt="Kit admisie sport - detaliu montaj și configurare în atelier DROSU Engineering Râmnicu Vâlcea" 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  width={800}
+                  height={600}
+                />
               </div>
             </div>
 

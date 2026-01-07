@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
@@ -50,13 +51,13 @@ const Services = () => {
             Serviciile Noastre
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-chrome-white mb-6">
-            Soluții Complete de
-            <span className="text-performance-red"> Performanță</span>
+            Modificări Performanță Auto
+            <span className="text-performance-red"> Râmnicu Vâlcea</span>
           </h2>
           <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            De la modificări hardware complexe la modificări aerodinamice, oferim servicii complete 
-            pentru maximizarea potențialului automobilelor de strada și de curse. 
-            Experiența noastră în motorsport ne permite să oferim servicii de calitate superioară în Râmnicu Vâlcea, Județul Vâlcea.
+            Servicii complete de modificări hardware și tuning auto pentru mașini de strada și de curse în Râmnicu Vâlcea, Județul Vâlcea. 
+            De la modificări hardware complexe la modificări aerodinamice, oferim soluții complete pentru maximizarea potențialului automobilelor. 
+            Experiența noastră în motorsport ne permite să oferim servicii de calitate superioară.
           </p>
         </div>
 
@@ -87,10 +88,24 @@ const Services = () => {
                   <span className="text-performance-orange font-bold text-lg">
                     {service.price}
                   </span>
-                  <Button variant="ghost" size="sm" className="text-performance-red hover:text-chrome-white group">
-                    Detalii
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Button>
+                  {service.title === "Modificări Hardware" ? (
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="text-performance-red hover:text-chrome-white group"
+                      asChild
+                    >
+                      <Link to="/servicii/modificari-hardware">
+                        Detalii
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      </Link>
+                    </Button>
+                  ) : (
+                    <Button variant="ghost" size="sm" className="text-performance-red hover:text-chrome-white group">
+                      Detalii
+                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                  )}
                 </div>
               </CardContent>
             </Card>
