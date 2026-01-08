@@ -20,10 +20,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center">
-                <span className="text-chrome-white font-bold text-xl">DE</span>
-              </div>
+            <div className="flex items-center space-x-3 mb-6">
+              <img 
+                src={drosuLogo} 
+                alt="DROSU Engineering Logo" 
+                className="h-12 w-auto"
+              />
               <div className="text-xl font-bold text-chrome-white">
                 DROSU<span className="text-performance-red">Engineering</span>
               </div>
