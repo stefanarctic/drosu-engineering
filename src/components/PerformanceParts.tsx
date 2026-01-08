@@ -93,9 +93,20 @@ const PerformanceParts = () => {
           ))}
         </div>
 
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button variant="performance" size="xl" onClick={scrollToContact}>
             Verifică disponibilitatea
+          </Button>
+          <Button 
+            variant="outline" 
+            size="xl" 
+            className="border-performance-red text-performance-red hover:bg-performance-red hover:text-chrome-white"
+            asChild
+          >
+            <Link to="/piese">
+              Vezi Catalogul Complet
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
           </Button>
         </div>
       </div>
