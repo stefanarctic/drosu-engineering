@@ -88,24 +88,23 @@ const Services = () => {
                   <span className="text-performance-orange font-bold text-lg">
                     {service.price}
                   </span>
-                  {service.title === "Modificări Hardware" ? (
-                    <Button 
-                      variant="ghost" 
-                      size="sm" 
-                      className="text-performance-red hover:text-chrome-white group"
-                      asChild
-                    >
-                      <Link to="/servicii/modificari-hardware">
-                        Detalii
-                        <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Link>
-                    </Button>
-                  ) : (
-                    <Button variant="ghost" size="sm" className="text-performance-red hover:text-chrome-white group">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-performance-red hover:text-chrome-white group"
+                    asChild
+                  >
+                    <Link to={
+                      service.title === "Modificări Hardware" ? "/servicii/modificari-hardware" :
+                      service.title === "Suspensie Sport" ? "/servicii/suspensie-sport" :
+                      service.title === "Optimizare Aerodinamică" ? "/servicii/optimizare-aerodinamica" :
+                      service.title === "Mentenanță Specializată" ? "/servicii/mentenanta-specializata" :
+                      "/#services"
+                    }>
                       Detalii
                       <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  )}
+                    </Link>
+                  </Button>
                 </div>
               </CardContent>
             </Card>

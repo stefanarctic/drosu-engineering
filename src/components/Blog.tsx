@@ -1,10 +1,16 @@
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight, BookOpen, TrendingUp } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Link } from "react-router-dom";
 
 const Blog = () => {
   const blogPosts = [
+    {
+      title: "Top 5 Modificări Performanță",
+      description: "Descoperă cele mai eficiente 5 modificări de performanță pentru mașina ta. De la kit admisie la optimizare aerodinamică, găsește modificările perfecte.",
+      link: "/blog/top-5-modificari-performanta",
+      icon: <TrendingUp className="w-6 h-6" />
+    },
     {
       title: "Ce Modificări Pot Face la Mașina Mea?",
       description: "Ghid complet despre modificările de performanță disponibile pentru mașinile de strada și curse. Află ce modificări sunt potrivite pentru automobilul tău.",

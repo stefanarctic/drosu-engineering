@@ -41,7 +41,31 @@ const pages = [
     priority: '0.9'
   },
   {
+    loc: '/servicii/suspensie-sport',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.9'
+  },
+  {
+    loc: '/servicii/optimizare-aerodinamica',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.9'
+  },
+  {
+    loc: '/servicii/mentenanta-specializata',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.9'
+  },
+  {
     loc: '/blog/ce-modificari-pot-face',
+    lastmod: CURRENT_DATE,
+    changefreq: 'monthly',
+    priority: '0.8'
+  },
+  {
+    loc: '/blog/top-5-modificari-performanta',
     lastmod: CURRENT_DATE,
     changefreq: 'monthly',
     priority: '0.8'
