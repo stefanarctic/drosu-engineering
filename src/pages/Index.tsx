@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Services from "@/components/Services";
@@ -8,6 +10,22 @@ import Footer from "@/components/Footer";
 import SEO from "@/components/SEO";
 
 const Index = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Handle scroll to section when page loads with hash
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      // Wait for page to render, then scroll
+      setTimeout(() => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  }, [location.hash]);
+
   return (
     <div className="min-h-screen bg-background">
       <SEO 

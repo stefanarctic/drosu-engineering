@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import drosuLogo from "../assets/drosu-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { name: "Acasă", href: "#home" },
@@ -19,15 +22,24 @@ const Header = () => {
     
     // If it's an external link (starts with /), navigate to it
     if (href.startsWith('/')) {
-      window.location.href = href;
+      navigate(href);
       return;
     }
     
-    // Otherwise, scroll to section
-    const targetId = href.replace('#', '');
-    document.getElementById(targetId)?.scrollIntoView({ 
-      behavior: 'smooth' 
-    });
+    // If it's an anchor link (#)
+    if (href.startsWith('#')) {
+      const targetId = href.replace('#', '');
+      
+      // If we're not on the main page, navigate to main page with hash
+      if (location.pathname !== '/') {
+        window.location.href = `/${href}`;
+      } else {
+        // We're already on main page, just scroll
+        document.getElementById(targetId)?.scrollIntoView({ 
+          behavior: 'smooth' 
+        });
+      }
+    }
   };
 
   const handleMobileNavClick = (href: string, e: React.MouseEvent) => {
@@ -72,9 +84,13 @@ const Header = () => {
               variant="performance" 
               size="default"
               onClick={() => {
-                document.getElementById('contact')?.scrollIntoView({ 
-                  behavior: 'smooth' 
-                });
+                if (location.pathname !== '/') {
+                  window.location.href = '/#contact';
+                } else {
+                  document.getElementById('contact')?.scrollIntoView({ 
+                    behavior: 'smooth' 
+                  });
+                }
               }}
             >
               Programează Consultanță
@@ -109,10 +125,14 @@ const Header = () => {
                 size="default" 
                 className="mt-4"
                 onClick={() => {
-                  document.getElementById('contact')?.scrollIntoView({ 
-                    behavior: 'smooth' 
-                  });
                   setIsMenuOpen(false);
+                  if (location.pathname !== '/') {
+                    window.location.href = '/#contact';
+                  } else {
+                    document.getElementById('contact')?.scrollIntoView({ 
+                      behavior: 'smooth' 
+                    });
+                  }
                 }}
               >
                 Programează Consultanță
