@@ -15,7 +15,7 @@ import CeModificariPotFace from "./pages/Blog/CeModificariPotFace";
 import Top5ModificariPerformanta from "./pages/Blog/Top5ModificariPerformanta";
 import NotFound from "./pages/NotFound";
 import Analytics from "./components/Analytics";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react"
 
 const queryClient = new QueryClient();
 
