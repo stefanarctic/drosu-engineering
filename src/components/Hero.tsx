@@ -2,7 +2,7 @@ import { ArrowRight, Zap, Settings, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
 import heroImage from "@/assets/poze_concurs_musetesti/IMG_1365.jpg";
 import heroVideo from "@/assets/poze_concurs_musetesti/DrosuEngineeringMusetesti.mp4";
-import { trackEvent } from "./Analytics";
+import { trackEvent } from "@/lib/analytics-utils";
 
 const Hero = () => {
   return (

@@ -1,12 +1,17 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { trackEvent } from '@/lib/analytics-utils';
+
+type DataLayerArgs = string | Date | Record<string, unknown>;
+type GtagFunction = (...args: DataLayerArgs[]) => void;
+type FbqFunction = (...args: string[]) => void;
 
 // Extend Window interface for global variables
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-    fbq?: (...args: any[]) => void;
+    dataLayer: DataLayerArgs[];
+    gtag: GtagFunction;
+    fbq?: FbqFunction;
   }
 }
 
@@ -14,24 +19,6 @@ interface AnalyticsProps {
   googleAnalyticsId?: string;
   facebookPixelId?: string;
 }
-
-// Helper function to track events
-export const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
-  if (window.gtag) {
-    window.gtag('event', eventName, eventParams);
-  }
-};
-
-// Helper function to track conversions
-export const trackConversion = (conversionType: string, value?: number, currency = 'RON') => {
-  if (window.gtag) {
-    window.gtag('event', 'conversion', {
-      'send_to': conversionType,
-      'value': value,
-      'currency': currency
-    });
-  }
-};
 
 const Analytics: React.FC<AnalyticsProps> = ({ 
   googleAnalyticsId = import.meta.env.VITE_GA4_ID || 'G-XXXXXXXXXX',
@@ -48,9 +35,10 @@ const Analytics: React.FC<AnalyticsProps> = ({
       document.head.appendChild(script);
 
       window.dataLayer = window.dataLayer || [];
-      function gtag(...args: any[]) {
+      function gtag(...args: DataLayerArgs[]) {
         window.dataLayer.push(args);
       }
+      window.gtag = gtag;
       gtag('js', new Date());
       gtag('config', googleAnalyticsId, {
         page_path: location.pathname + location.search,
@@ -72,7 +60,7 @@ const Analytics: React.FC<AnalyticsProps> = ({
         }
       };
     }
-  }, [googleAnalyticsId, facebookPixelId]);
+  }, [googleAnalyticsId, facebookPixelId, location.pathname, location.search]);
 
   // Track page views on route change
   useEffect(() => {
@@ -82,11 +70,11 @@ const Analytics: React.FC<AnalyticsProps> = ({
         page_title: document.title
       });
     }
-  }, [location, googleAnalyticsId]);
+  }, [location.pathname, location.search, googleAnalyticsId]);
 
   // Track scroll depth
   useEffect(() => {
-    let scrollTracked = {
+    const scrollTracked = {
       '25': false,
       '50': false,
       '75': false,
