@@ -15,6 +15,7 @@ import CeModificariPotFace from "./pages/Blog/CeModificariPotFace";
 import Top5ModificariPerformanta from "./pages/Blog/Top5ModificariPerformanta";
 import NotFound from "./pages/NotFound";
 import Analytics from "./components/Analytics";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next"
 
 const queryClient = new QueryClient();
 
@@ -26,6 +27,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Analytics />
+          <VercelAnalytics />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/piese" element={<Kits />} />
