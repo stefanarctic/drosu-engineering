@@ -1,9 +1,11 @@
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
+import emailjs from '@emailjs/browser';
+import { EMAILJS_CONFIG, BUSINESS_EMAIL, EmailTemplateParams } from '../config/emailjs';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,6 +17,7 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -22,32 +25,60 @@ const Contact = () => {
       ...prev,
       [name]: value
     }));
+    
+    // Clear error when user starts typing
+    if (error) {
+      setError(null);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setError(null);
     
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      vehicle: "",
-      message: ""
-    });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+    try {
+      // Prepare email template parameters
+      const templateParams: EmailTemplateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone || 'Nu a fost furnizat',
+        vehicle: formData.vehicle || 'Nu a fost specificat',
+        message: formData.message,
+        to_email: BUSINESS_EMAIL,
+      };
+
+      // Send email using EmailJS
+      const response = await emailjs.send(
+        EMAILJS_CONFIG.SERVICE_ID,
+        EMAILJS_CONFIG.TEMPLATE_ID,
+        templateParams,
+        EMAILJS_CONFIG.PUBLIC_KEY
+      );
+
+      if (response.status === 200) {
+        setIsSubmitted(true);
+        
+        // Reset form after successful submission
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          vehicle: "",
+          message: ""
+        });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => setIsSubmitted(false), 5000);
+      } else {
+        throw new Error('Failed to send email');
+      }
+    } catch (err) {
+      console.error('EmailJS Error:', err);
+      setError('A apărut o eroare la trimiterea mesajului. Te rugăm să încerci din nou sau să ne contactezi direct.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -159,6 +190,14 @@ const Contact = () => {
               </CardTitle>
             </CardHeader>
             <CardContent>
+              {error && (
+                <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                  <div className="flex items-center gap-2 text-red-400">
+                    <AlertCircle className="w-5 h-5" />
+                    <span className="text-sm">{error}</span>
+                  </div>
+                </div>
+              )}
               {isSubmitted ? (
                 <div className="text-center py-6">
                   <CheckCircle className="w-12 h-12 text-performance-red mx-auto mb-3" />

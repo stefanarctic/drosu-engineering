@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouă Solicitare de Consultanță - Drosu Engineering</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 14px;
+        }
+        .content {
+            padding: 30px 20px;
+        }
+        .client-info {
+            background-color: #f8f9fa;
+            border-left: 4px solid #dc2626;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .client-info h3 {
+            margin: 0 0 15px 0;
+            color: #dc2626;
+            font-size: 18px;
+        }
+        .info-row {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+        }
+        .info-label {
+            font-weight: bold;
+            min-width: 80px;
+            color: #555;
+        }
+        .info-value {
+            color: #333;
+            flex: 1;
+        }
+        .message-section {
+            margin: 25px 0;
+        }
+        .message-section h3 {
+            color: #dc2626;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .message-content {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #e9ecef;
+            white-space: pre-wrap;
+            font-style: italic;
+        }
+        .footer {
+            background-color: #1f2937;
+            color: #9ca3af;
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+        }
+        .footer a {
+            color: #dc2626;
+            text-decoration: none;
+        }
+        .urgent {
+            background-color: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #dc2626;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .content {
+                padding: 20px 15px;
+            }
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .info-label {
+                min-width: auto;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">DROSU ENGINEERING</div>
+            <h1>Nouă Solicitare de Consultanță</h1>
+            <p>Formular de contact - Site web</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <p>Salut,</p>
+            <p>Ai primit o nouă solicitare de consultanță prin formularul de contact de pe site-ul <strong>Drosu Engineering</strong>.</p>
+
+            <!-- Urgent Notice -->
+            <div class="urgent">
+                ⚡ Răspunde cât mai repede pentru a nu pierde clientul!
+            </div>
+
+            <!-- Client Information -->
+            <div class="client-info">
+                <h3>📋 Detalii Client</h3>
+                <div class="info-row">
+                    <span class="info-label">👤 Nume:</span>
+                    <span class="info-value">{{from_name}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📧 Email:</span>
+                    <span class="info-value">{{from_email}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">📞 Telefon:</span>
+                    <span class="info-value">{{phone}}</span>
+                </div>
+                <div class="info-row">
+                    <span class="info-label">🚗 Vehicul:</span>
+                    <span class="info-value">{{vehicle}}</span>
+                </div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="message-section">
+                <h3>💬 Mesajul Clientului</h3>
+                <div class="message-content">{{message}}</div>
+            </div>
+
+            <!-- Action Items -->
+            <div style="background-color: #f0f9ff; border: 1px solid #0ea5e9; padding: 20px; border-radius: 5px; margin: 25px 0;">
+                <h3 style="color: #0ea5e9; margin-top: 0;">📝 Următorii Pași Recomandați:</h3>
+                <ul style="margin: 10px 0; padding-left: 20px;">
+                    <li>Răspunde la email în maximum 2 ore</li>
+                    <li>Sună clientul dacă a furnizat numărul de telefon</li>
+                    <li>Programează o consultanță gratuită</li>
+                    <li>Pregătește o ofertă personalizată</li>
+                </ul>
+            </div>
+
+            <p>Mult succes cu acest potențial client!</p>
+            <p>Echipa Drosu Engineering</p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Drosu Engineering</strong> - Modificări Hardware pentru Performanță</p>
+            <p>📍 Strada Bujorului 5, Râmnicu Vâlcea | 📞 0726 960 376</p>
+            <p>🌐 <a href="https://www.drosuengineering.com">www.drosuengineering.com</a></p>
+            <p style="margin-top: 15px; font-size: 11px; opacity: 0.7;">
+                Acest email a fost generat automat prin formularul de contact de pe site-ul Drosu Engineering.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
