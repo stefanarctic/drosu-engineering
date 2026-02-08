@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -6,8 +6,21 @@ import drosuLogo from "../assets/drosu-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    // Check initial scroll position
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Acasă", href: "#home" },
@@ -48,8 +61,12 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-6 py-4">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all ${
+      isScrolled 
+        ? 'bg-background/95 backdrop-blur-md' 
+        : 'bg-transparent border-b-0'
+    }`}>
+      <div className="container mx-auto px-6 py-5">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div 
@@ -59,9 +76,9 @@ const Header = () => {
             <img 
               src={drosuLogo} 
               alt="DROSU Engineering Logo" 
-              className="h-12 w-auto"
+              className="h-14 w-auto"
             />
-            <div className="text-xl font-bold text-foreground">
+            <div className="text-2xl font-bold text-foreground">
               DROSU<span className="text-performance-red">Engineering</span>
             </div>
           </div>
@@ -72,7 +89,7 @@ const Header = () => {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-foreground hover:text-performance-red transition-colors duration-300 relative group cursor-pointer"
+                className="text-lg font-normal nav-text text-foreground hover:text-performance-red transition-colors duration-300 relative group cursor-pointer"
                 onClick={(e) => handleNavClick(item.href, e)}
               >
                 {item.name}
@@ -86,6 +103,7 @@ const Header = () => {
             <Button 
               variant="performance" 
               size="default"
+              className="text-base"
               onClick={() => {
                 if (location.pathname !== '/') {
                   window.location.href = '/#contact';
@@ -105,7 +123,7 @@ const Header = () => {
             className="md:hidden text-foreground"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
 
@@ -117,7 +135,7 @@ const Header = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground hover:text-performance-red transition-colors duration-300 cursor-pointer"
+                  className="text-xl font-semibold text-foreground hover:text-performance-red transition-colors duration-300 cursor-pointer"
                   onClick={(e) => handleMobileNavClick(item.href, e)}
                 >
                   {item.name}
@@ -126,7 +144,7 @@ const Header = () => {
               <Button 
                 variant="performance" 
                 size="default" 
-                className="mt-4"
+                className="mt-4 text-lg font-semibold"
                 onClick={() => {
                   setIsMenuOpen(false);
                   if (location.pathname !== '/') {

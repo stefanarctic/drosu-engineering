@@ -1,57 +1,37 @@
 import { ArrowRight, Zap, Settings, Trophy } from "lucide-react";
 import { Button } from "./ui/button";
-import heroImage from "@/assets/poze_concurs_musetesti/IMG_1365.jpg";
+import fordFiestaImage from "@/assets/ford-fiesta-transparent.png";
 import heroVideo from "@/assets/poze_concurs_musetesti/DrosuEngineeringMusetesti.mp4";
 import { trackEvent } from "./Analytics";
 
 const Hero = () => {
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
-      </div>
-
-      {/* Background Video */}
-      {/* <div className="absolute inset-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-r from-carbon-black via-carbon-black/80 to-transparent"></div>
-      </div> */}
-
+    <section id="home" className="min-h-screen relative overflow-hidden bg-black pt-20 lg:pt-0">
       {/* Content */}
-      <div className="relative container mx-auto px-6 min-h-screen flex items-center">
-        <div className="max-w-3xl animate-fade-in">
+      <div className="relative container mx-auto px-6 min-h-screen flex items-center bg-black pb-12 lg:py-0">
+        <div className="w-full flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+          {/* Text Content */}
+          <div className="flex-1 max-w-3xl animate-fade-in text-center lg:text-left">
           <div className="mb-6">
             {/* <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
               Atelier de Performanță Auto
             </span> */}
-            <h1 className="text-5xl md:text-7xl font-bold text-chrome-white mb-6 mt-4 leading-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-chrome-white mb-6 mt-4 leading-tight">
               Tuning Auto
               <span className="text-performance-red"> Valcea</span>
               <br />
               Performanță Maximă
             </h1>
-            <p className="text-xl text-steel-gray mb-8 max-w-2xl">
+            <p className="text-lg md:text-xl text-steel-gray mb-8 max-w-2xl mx-auto lg:mx-0">
               Transformăm mașinile tale în mașini de performanță. Modificări hardware profesionale pentru strada și curse în Râmnicu Vâlcea.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-10">
+          <div className="flex flex-col sm:flex-row gap-4 mt-10 justify-center lg:justify-start">
             <Button 
               variant="hero" 
               size="xl" 
-              className="group"
+              className="group w-full sm:w-auto"
               onClick={() => {
                 trackEvent('cta_click', {
                   cta_text: 'Consultanță Gratuită',
@@ -69,7 +49,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               size="xl" 
-              className="border-chrome-white text-chrome-white hover:bg-chrome-white hover:text-carbon-black"
+              className="border-chrome-white text-chrome-white hover:bg-chrome-white hover:text-carbon-black w-full sm:w-auto"
               onClick={() => {
                 trackEvent('cta_click', {
                   cta_text: 'Vezi Serviciile Noastre',
@@ -115,6 +95,26 @@ const Hero = () => {
               </div>
             </div>
           </div> */}
+          </div>
+
+          {/* Ford Fiesta Image */}
+          <div className="flex-1 flex justify-center lg:justify-end animate-fade-in relative lg:ml-20 lg:mt-14">
+            {/* Highlight behind car */}
+            <div 
+              className="absolute inset-0 flex items-center justify-center lg:justify-end"
+              style={{
+                background: 'radial-gradient(ellipse at center, rgba(220, 38, 38, 0.3) 0%, rgba(220, 38, 38, 0.15) 35%, transparent 70%)',
+                filter: 'blur(60px)',
+                transform: 'scale(1.5)',
+                zIndex: 0
+              }}
+            />
+            <img 
+              src={fordFiestaImage} 
+              alt="Ford Fiesta" 
+              className="max-w-full h-auto object-contain relative z-10"
+            />
+          </div>
         </div>
       </div>
 
