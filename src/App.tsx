@@ -13,6 +13,7 @@ import OptimizareAerodinamica from "./pages/Services/OptimizareAerodinamica";
 import MentenantaSpecializata from "./pages/Services/MentenantaSpecializata";
 import CeModificariPotFace from "./pages/Blog/CeModificariPotFace";
 import Top5ModificariPerformanta from "./pages/Blog/Top5ModificariPerformanta";
+import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
 import Analytics from "./components/Analytics";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react"
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/servicii/mentenanta-specializata" element={<MentenantaSpecializata />} />
             <Route path="/blog/ce-modificari-pot-face" element={<CeModificariPotFace />} />
             <Route path="/blog/top-5-modificari-performanta" element={<Top5ModificariPerformanta />} />
+            {/* <Route path="/coming-soon" element={<ComingSoon />} /> */}
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -77,11 +77,11 @@ const Contact = () => {
 
   const handleEmailClick = () => {
     trackEvent('email_click', {
-      email: 'drosuengineering@gmail.com',
+      email: 'drosucristian10@gmail.com',
       location: 'contact_section'
     });
     trackConversion('email_click');
-    window.location.href = 'mailto:drosuengineering@gmail.com';
+    window.location.href = 'mailto:drosucristian10@gmail.com';
   };
 
   const contactInfo = [
@@ -94,7 +94,7 @@ const Contact = () => {
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      info: "drosuengineering@gmail.com",
+      info: "drosucristian10@gmail.com",
       color: "text-performance-orange"
     },
     {
