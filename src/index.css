@@ -8,35 +8,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark automotive theme inspired by high-performance workshops */
-    --background: 220 13% 8%;
-    --foreground: 210 40% 98%;
+    /* Pure black automotive theme matching hero section */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 13% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 13% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
 
     /* Performance red accent - inspired by racing */
     --primary: 0 84% 58%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 96%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
 
     /* Orange accent for highlights */
     --accent: 25 95% 58%;
-    --accent-foreground: 220 13% 8%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
     --ring: 0 84% 58%;
 
     --radius: 0.5rem;
@@ -45,10 +45,10 @@ All colors MUST be HSL.
     --performance-red: 0 84% 58%;
     --performance-orange: 25 95% 58%;
     --performance-blue: 217 91% 60%;
-    --carbon-black: 220 13% 8%;
-    --carbon-gray: 217.2 32.6% 17.5%;
-    --steel-gray: 215 20.2% 65.1%;
-    --chrome-white: 210 40% 98%;
+    --carbon-black: 0 0% 0%;
+    --carbon-gray: 0 0% 14%;
+    --steel-gray: 0 0% 64%;
+    --chrome-white: 0 0% 96%;
 
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(var(--performance-red)), hsl(var(--performance-orange)));
@@ -66,32 +66,32 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 220 13% 8%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 0%;
+    --foreground: 0 0% 96%;
 
-    --card: 220 13% 10%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 96%;
 
-    --popover: 220 13% 10%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 96%;
 
     --primary: 0 84% 58%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 0 0% 96%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 96%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 12%;
+    --muted-foreground: 0 0% 64%;
 
     --accent: 25 95% 58%;
-    --accent-foreground: 220 13% 8%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 96%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 0 0% 14%;
+    --input: 0 0% 14%;
     --ring: 0 84% 58%;
   }
 }
