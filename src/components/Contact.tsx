@@ -4,7 +4,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useState } from "react";
-import { trackEvent, trackConversion } from "./Analytics";
+import { trackEvent, trackConversion } from "@/lib/analytics-utils";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
