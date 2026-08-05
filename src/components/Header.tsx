@@ -1,167 +1,176 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import { Button } from "./ui/button";
-import drosuLogo from "../assets/drosu-logo.png";
+import { useCart } from "@/context/CartContext";
+import logo from "@/assets/demo/logo.png";
+
+const navItems = [
+  { name: "Acasă", href: "#home" },
+  { name: "Despre", href: "#capabilities" },
+  { name: "Servicii", href: "#services" },
+  { name: "Shop", href: "#shop" },
+  { name: "Video", href: "#videos" },
+];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [activeId, setActiveId] = useState("home");
+  const { cartCount, openCart } = useCart();
   const location = useLocation();
   const navigate = useNavigate();
+  const onHome = location.pathname === "/";
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+    if (!onHome) return;
+    const links = navItems.map((n) => n.href.replace("#", ""));
+    let raf = 0;
+
+    const spy = () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = 0;
+        const line = 150;
+        let next: string | null = null;
+        let bestTop = -Infinity;
+        for (const id of links) {
+          const el = document.getElementById(id);
+          if (!el) continue;
+          const t = el.getBoundingClientRect().top;
+          if (t <= line && t > bestTop) {
+            bestTop = t;
+            next = id;
+          }
+        }
+        if (next) setActiveId(next);
+      });
     };
 
-    // Check initial scroll position
-    handleScroll();
+    window.addEventListener("scroll", spy, true);
+    window.addEventListener("resize", spy);
+    spy();
+    return () => {
+      window.removeEventListener("scroll", spy, true);
+      window.removeEventListener("resize", spy);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [onHome]);
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navItems = [
-    { name: "Acasă", href: "#home" },
-    { name: "Servicii", href: "#services" },
-    { name: "Piese", href: "/piese" },
-    { name: "Despre Noi", href: "#about" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const handleNavClick = (href: string, e: React.MouseEvent) => {
-    e.preventDefault();
-    
-    // If it's an external link (starts with /), navigate to it
-    if (href.startsWith('/')) {
-      navigate(href);
+  const scrollTo = (href: string) => {
+    const id = href.replace("#", "");
+    if (!onHome) {
+      navigate(`/${href}`);
+      setIsMenuOpen(false);
       return;
     }
-    
-    // If it's an anchor link (#)
-    if (href.startsWith('#')) {
-      const targetId = href.replace('#', '');
-      
-      // If we're not on the main page, navigate to main page with hash
-      if (location.pathname !== '/') {
-        window.location.href = `/${href}`;
-      } else {
-        // We're already on main page, just scroll
-        document.getElementById(targetId)?.scrollIntoView({ 
-          behavior: 'smooth' 
-        });
-      }
-    }
-  };
-
-  const handleMobileNavClick = (href: string, e: React.MouseEvent) => {
-    handleNavClick(href, e);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all ${
-      isScrolled 
-        ? 'bg-background/95 backdrop-blur-md' 
-        : 'bg-transparent border-b-0'
-    }`}>
-      <div className="container mx-auto px-6 py-5">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div 
-            className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
-            onClick={() => navigate('/')}
-          >
-            <img 
-              src={drosuLogo} 
-              alt="DROSU Engineering Logo" 
-              className="h-14 w-auto"
-            />
-            <div className="text-2xl font-bold text-foreground">
-              DROSU<span className="text-performance-red">Engineering</span>
-            </div>
-          </div>
+    <header className="sticky top-0 z-50 bg-demo-bg/95 backdrop-blur-md border-b border-white/10">
+      <nav className="max-w-[1280px] mx-auto px-5 md:px-10 h-[70px] flex items-center justify-between">
+        <a
+          href="#home"
+          onClick={(e) => {
+            e.preventDefault();
+            scrollTo("#home");
+          }}
+          className="flex items-center"
+        >
+          <img src={logo} alt="Drosu Engineering" className="h-[34px] w-auto" />
+        </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center gap-9 text-[15px] tracking-[0.01em]">
+          {navItems.map((item) => {
+            const id = item.href.replace("#", "");
+            const active = activeId === id;
+            return (
+              <a
+                key={item.name}
+                href={item.href}
+                className={`nav-link ${active ? "text-white font-medium" : "text-demo-muted"}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(item.href);
+                }}
+              >
+                {item.name}
+              </a>
+            );
+          })}
+          <button
+            type="button"
+            onClick={openCart}
+            className="nav-link text-demo-muted flex items-center gap-[7px] cursor-pointer"
+          >
+            Coș
+            <span className="min-w-[22px] h-[22px] px-1.5 rounded-full bg-demo-accent text-white text-[11px] font-semibold flex items-center justify-center">
+              {cartCount}
+            </span>
+          </button>
+          <a
+            href="#contact"
+            className="btn-fill bg-white text-demo-bg font-semibold text-[14px] px-5 py-2.5"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo("#contact");
+            }}
+          >
+            Contact
+          </a>
+        </div>
+
+        <div className="flex lg:hidden items-center gap-3">
+          <button
+            type="button"
+            onClick={openCart}
+            className="text-demo-muted text-sm flex items-center gap-1.5"
+          >
+            Coș
+            <span className="min-w-[20px] h-[20px] px-1 rounded-full bg-demo-accent text-white text-[10px] font-semibold flex items-center justify-center">
+              {cartCount}
+            </span>
+          </button>
+          <button
+            type="button"
+            className="text-white"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Închide meniul" : "Deschide meniul"}
+          >
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
+      </nav>
+
+      {isMenuOpen && (
+        <div className="lg:hidden border-t border-white/10 bg-demo-bg px-5 pb-5">
+          <div className="flex flex-col gap-4 pt-4">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
-                className="text-lg font-normal nav-text text-foreground hover:text-performance-red transition-colors duration-300 relative group cursor-pointer"
-                onClick={(e) => handleNavClick(item.href, e)}
-              >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-performance-red transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
-
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button 
-              variant="performance" 
-              size="default"
-              className="text-base"
-              onClick={() => {
-                if (location.pathname !== '/') {
-                  window.location.href = '/#contact';
-                } else {
-                  document.getElementById('contact')?.scrollIntoView({ 
-                    behavior: 'smooth' 
-                  });
-                }
-              }}
-            >
-              Programează Consultanță
-            </Button>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
-
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-border">
-            <nav className="flex flex-col space-y-4 pt-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-xl font-semibold text-foreground hover:text-performance-red transition-colors duration-300 cursor-pointer"
-                  onClick={(e) => handleMobileNavClick(item.href, e)}
-                >
-                  {item.name}
-                </a>
-              ))}
-              <Button 
-                variant="performance" 
-                size="default" 
-                className="mt-4 text-lg font-semibold"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  if (location.pathname !== '/') {
-                    window.location.href = '/#contact';
-                  } else {
-                    document.getElementById('contact')?.scrollIntoView({ 
-                      behavior: 'smooth' 
-                    });
-                  }
+                className="text-lg text-demo-muted hover:text-white"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(item.href);
                 }}
               >
-                Programează Consultanță
-              </Button>
-            </nav>
+                {item.name}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              className="btn-fill bg-white text-demo-bg font-semibold text-[14px] px-5 py-3 text-center"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#contact");
+              }}
+            >
+              Contact
+            </a>
           </div>
-        )}
-      </div>
+        </div>
+      )}
     </header>
   );
 };

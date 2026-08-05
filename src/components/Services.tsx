@@ -1,129 +1,50 @@
-import { 
-  Cpu, 
-  Wrench, 
-  Gauge, 
-  Car, 
-  Zap, 
-  Settings2,
-  ArrowRight 
-} from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Link } from "react-router-dom";
+const services = [
+  {
+    num: "01",
+    title: "Performanță Stradă",
+    desc: "Motor, evacuare, ECU, suspensie, frâne și aero — acordate pentru drumuri reale și rezultate repetabile.",
+  },
+  {
+    num: "02",
+    title: "Șasiu & Handling",
+    desc: "Geometrie, coilover-e, bucșe și aliniere reglate pentru încredere pe stradă sau circuit.",
+  },
+  {
+    num: "03",
+    title: "Build-uri de Curse",
+    desc: "Sisteme de siguranță, lightweighting, powertrain și packaging orientat pe circuit, de la zero.",
+  },
+];
 
 const Services = () => {
-  const services = [
-    {
-      icon: <Wrench className="w-8 h-8" />,
-      title: "Modificări Hardware",
-      description: "Instalarea și configurarea pieselor de performanță pentru upgrade-uri complete.",
-      features: ["Admisie sport", "Intercooler performant", "Evacuare performanță"],
-      price: "de la 1500 RON"
-    },
-    {
-      icon: <Car className="w-8 h-8" />,
-      title: "Suspensie Sport",
-      description: "Upgrade-uri complete ale sistemului de suspensie pentru handling superior.",
-      features: ["Arcuri sport", "Amortizoare reglabile", "Stabilizatoare"],
-      price: "de la 2000 RON"
-    },
-    {
-      icon: <Gauge className="w-8 h-8" />,
-      title: "Optimizare Aerodinamică",
-      description: "Optimizarea aerodinamică a vehiculului pentru stabilitate la viteze înalte și consum redus.",
-      features: ["Splitter", "Spoiler", "Diffuser"],
-      price: "de la 1200 RON"
-    },
-    {
-      icon: <Settings2 className="w-8 h-8" />,
-      title: "Mentenanță Specializată",
-      description: "Servicii complete de mentenanță pentru vehiculele modificate.",
-      features: ["Diagnostic avansat", "Înlocuire piese", "Verificări periodice"],
-      price: "de la 200 RON"
-    }
-  ];
-
   return (
-    <section id="services" className="py-20 bg-gradient-to-b from-background to-carbon-gray">
-      <div className="container mx-auto px-6 xl:max-w-[1320px] 2xl:max-w-[1500px]">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
-            Serviciile Noastre
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-chrome-white mb-6">
-            Modificări Performanță Auto
-            <span className="text-performance-red"> Râmnicu Vâlcea</span>
-          </h2>
-          <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            Servicii complete de modificări hardware și tuning auto pentru mașini de strada și de curse în Râmnicu Vâlcea, Județul Vâlcea. 
-            De la modificări hardware complexe la modificări aerodinamice, oferim soluții complete pentru maximizarea potențialului automobilelor. 
-            Experiența noastră în motorsport ne permite să oferim servicii de calitate superioară.
-          </p>
-        </div>
+    <section id="services" className="max-w-[1280px] mx-auto px-5 md:px-10 py-20 md:py-[110px]">
+      <div className="font-mono text-[12px] tracking-[0.28em] text-demo-accent uppercase mb-4">
+        Ce facem
+      </div>
+      <h2 className="font-display font-bold text-[36px] md:text-[52px] uppercase leading-[1.05] max-w-[640px]">
+        Upgrade-uri proiectate să lucreze împreună
+      </h2>
+      <p className="max-w-[620px] mt-[22px] text-lg leading-relaxed text-demo-muted">
+        Fiecare build începe cu obiective clare. Proiectăm upgrade-uri care
+        lucrează împreună — nu piese izolate care se contrazic.
+      </p>
 
-        <div className="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
-          {services.map((service, index) => (
-            <Card key={index} className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-performance group w-full max-w-[420px] md:max-w-none flex flex-col h-full">
-              <CardHeader className="text-center md:text-left">
-                <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:animate-glow mx-auto md:mx-0">
-                  {service.icon}
-                </div>
-                <CardTitle className="text-xl font-bold text-chrome-white mb-2">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col h-full text-center md:text-left">
-                <p className="text-steel-gray mb-4">
-                  {service.description}
-                </p>
-                <ul className="space-y-2 mb-6 mx-auto md:mx-0 w-fit">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-steel-gray">
-                      <div className="w-2 h-2 bg-performance-red rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <div className="flex items-center justify-center gap-4 md:justify-between mt-auto">
-                  <span className="text-performance-orange font-bold text-lg">
-                    {service.price}
-                  </span>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="text-performance-red hover:text-chrome-white group"
-                    asChild
-                  >
-                    <Link to={
-                      service.title === "Modificări Hardware" ? "/servicii/modificari-hardware" :
-                      service.title === "Suspensie Sport" ? "/servicii/suspensie-sport" :
-                      service.title === "Optimizare Aerodinamică" ? "/servicii/optimizare-aerodinamica" :
-                      service.title === "Mentenanță Specializată" ? "/servicii/mentenanta-specializata" :
-                      "/#services"
-                    }>
-                      Detalii
-                      <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="text-center mt-16">
-          <Button 
-            variant="performance" 
-            size="xl"
-            onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ 
-                behavior: 'smooth' 
-              });
-            }}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-14">
+        {services.map((s) => (
+          <div
+            key={s.num}
+            className="card-do border border-white/10 bg-demo-surface p-8 md:p-[38px_34px]"
           >
-            Solicită Ofertă Personalizată
-          </Button>
-        </div>
+            <div className="font-mono text-[13px] text-demo-accent mb-5">
+              {s.num}
+            </div>
+            <div className="font-display font-semibold text-[24px] uppercase mb-3">
+              {s.title}
+            </div>
+            <p className="text-[15px] leading-relaxed text-demo-dim">{s.desc}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -1,327 +1,218 @@
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from "lucide-react";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { useState } from "react";
-import { trackEvent, trackConversion } from "./Analytics";
+import { useEffect, useState, type FormEvent } from "react";
+import { useCart } from "@/context/CartContext";
+import { trackConversion, trackEvent } from "./Analytics";
+
+const fieldClass =
+  "fld w-full bg-demo-bg border border-white/[0.14] text-white px-[15px] py-[13px] text-[15px] font-sans outline-none";
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
+  const { goalsPrefill, clearGoalsPrefill, clearCart } = useCart();
+  const [submitted, setSubmitted] = useState(false);
+  const [goals, setGoals] = useState("");
+  const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
     vehicle: "",
-    message: ""
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Track form start
-    trackEvent('form_start', {
-      form_name: 'contact_form',
-      form_location: 'contact_section'
-    });
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    // Here you would typically send the form data to your backend
-    console.log("Form submitted:", formData);
-    
-    // Track form submission
-    trackEvent('form_submit', {
-      form_name: 'contact_form',
-      form_location: 'contact_section'
-    });
-    
-    // Track conversion
-    trackConversion('contact_form_submission');
-    
-    setIsSubmitted(true);
-    setIsSubmitting(false);
-    
-    // Reset form after submission
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      vehicle: "",
-      message: ""
-    });
-    
-    // Reset success message after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
-  };
-
-  const handlePhoneClick = () => {
-    trackEvent('phone_click', {
-      phone_number: '0726960376',
-      location: 'contact_section'
-    });
-    trackConversion('phone_call');
-    window.location.href = 'tel:+40726960376';
-  };
-
-  const handleEmailClick = () => {
-    trackEvent('email_click', {
-      email: 'drosucristian10@gmail.com',
-      location: 'contact_section'
-    });
-    trackConversion('email_click');
-    window.location.href = 'mailto:drosucristian10@gmail.com';
-  };
-
-  const contactInfo = [
-    {
-      icon: <Phone className="w-5 h-5" />,
-      title: "Telefon",
-      info: "0726 960 376",
-      color: "text-performance-red"
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      title: "Email",
-      info: "drosucristian10@gmail.com",
-      color: "text-performance-orange"
-    },
-    {
-      icon: <MapPin className="w-5 h-5" />,
-      title: "Adresă",
-      info: "Strada Bujorului 5, Râmnicu Vâlcea",
-      color: "text-performance-blue"
-    },
-    {
-      icon: <Clock className="w-5 h-5" />,
-      title: "Program",
-      info: "Lun-Vin: 8:00-18:00",
-      color: "text-performance-red"
+  useEffect(() => {
+    if (goalsPrefill) {
+      setGoals(goalsPrefill);
+      setSubmitted(false);
     }
-  ];
+  }, [goalsPrefill]);
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    trackEvent("form_start", {
+      form_name: "contact_form",
+      form_location: "contact_section",
+    });
+    await new Promise((r) => setTimeout(r, 800));
+    trackEvent("form_submit", {
+      form_name: "contact_form",
+      form_location: "contact_section",
+    });
+    trackConversion("contact_form_submission");
+    console.log("Form submitted:", { ...form, goals });
+    setSubmitted(true);
+    clearCart();
+    clearGoalsPrefill();
+    setForm({ name: "", email: "", phone: "", vehicle: "" });
+    setGoals("");
+  };
 
   return (
-    <section id="contact" className="py-16 bg-gradient-to-b from-carbon-gray to-background">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
+    <section
+      id="contact"
+      className="border-t border-white/[0.08] bg-demo-deep"
+    >
+      <div className="max-w-[1280px] mx-auto px-5 md:px-10 py-20 md:py-[110px] grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-20">
+        <div>
+          <div className="font-mono text-[12px] tracking-[0.3em] text-demo-accent uppercase mb-[18px]">
             Contact
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-chrome-white mb-4">
-            Hai să Discutăm
-            <span className="text-performance-red"> Proiectul</span> Tău
+          </div>
+          <h2 className="font-display font-bold text-[40px] md:text-[52px] uppercase leading-none">
+            Începe build-ul
           </h2>
-          <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            Contactează-ne pentru o consultanță gratuită și să îți arătăm cum putem 
-            transforma vehiculul tău într-o mașină de performanță prin modificări hardware pentru strada și curse.
+          <p className="mt-5 max-w-[400px] text-[17px] leading-[1.6] text-demo-muted">
+            Trimite platforma și obiectivele — sau finalizează coșul de piese
+            aici. Răspundem cu un plan de baseline și o consultație gratuită,
+            de obicei în maxim o zi lucrătoare.
           </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {contactInfo.map((item, index) => (
-                <Card 
-                  key={index} 
-                  className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-glow group cursor-pointer"
-                  onClick={() => {
-                    if (item.title === 'Telefon') {
-                      handlePhoneClick();
-                    } else if (item.title === 'Email') {
-                      handleEmailClick();
-                    }
-                  }}
-                >
-                  <CardContent className="p-4">
-                    <div className="flex items-center space-x-3">
-                      <div className={`w-10 h-10 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300 ${
-                        item.color === 'text-performance-red' ? 'bg-gradient-to-br from-performance-red to-performance-red/80' :
-                        item.color === 'text-performance-orange' ? 'bg-gradient-to-br from-performance-orange to-performance-orange/80' :
-                        item.color === 'text-performance-blue' ? 'bg-gradient-to-br from-performance-blue to-performance-blue/80' :
-                        'bg-gradient-to-br from-performance-red to-performance-red/80'
-                      }`}>
-                        <div className="text-chrome-white">
-                          {item.icon}
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className="text-base font-semibold text-chrome-white mb-1">
-                          {item.title}
-                        </h4>
-                        <p className="text-sm text-steel-gray">
-                          {item.info}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+          <div className="mt-11 flex flex-col gap-[26px]">
+            <div>
+              <div className="font-mono text-[11px] tracking-[0.18em] text-[#5A5A60] uppercase mb-[7px]">
+                Telefon
+              </div>
+              <a
+                href="tel:+40726960376"
+                className="foot-link text-[17px] text-white"
+                onClick={() => {
+                  trackEvent("phone_click", {
+                    phone_number: "0726960376",
+                    location: "contact_section",
+                  });
+                  trackConversion("phone_call");
+                }}
+              >
+                +40 726 960 376
+              </a>
             </div>
-
-            {/* Map Placeholder */}
-            <div className="relative overflow-hidden rounded-lg bg-card border border-carbon-gray hover:border-performance-red transition-all duration-300">
-              <div className="h-64 flex items-center justify-center bg-gradient-to-br from-carbon-gray to-carbon-black">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-performance-red mx-auto mb-4 animate-float" />
-                  <h4 className="text-xl font-semibold text-chrome-white mb-2">
-                    Vizitează Atelierul
-                  </h4>
-                  <p className="text-steel-gray mb-4">
-                    Strada Bujorului 5, Râmnicu Vâlcea
-                  </p>
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
-                    className="border-performance-red text-performance-red hover:bg-performance-red hover:text-chrome-white"
-                    onClick={() => window.open('https://www.google.com/maps/place/Strada+Bujorului+5,+Râmnicu+Vâlcea/@45.1101662,24.3673393,20.25z/data=!4m6!3m5!1s0x474d38b72a848e35:0x941e30b0f202114!8m2!3d45.1101785!4d24.3673623!16s%2Fg%2F11mtg_dmy0?entry=ttu&g_ep=EgoyMDI1MDgxMi4wIKXMDSoASAFQAw%3D%3D', '_blank')}
-                  >
-                    Vezi pe Hartă
-                  </Button>
-                </div>
+            <div>
+              <div className="font-mono text-[11px] tracking-[0.18em] text-[#5A5A60] uppercase mb-[7px]">
+                Email
+              </div>
+              <a
+                href="mailto:drosucristian10@gmail.com"
+                className="foot-link text-[17px] text-white"
+              >
+                drosucristian10@gmail.com
+              </a>
+            </div>
+            <div>
+              <div className="font-mono text-[11px] tracking-[0.18em] text-[#5A5A60] uppercase mb-[7px]">
+                Adresă
+              </div>
+              <a
+                href="https://www.google.com/maps/place/Strada+Bujorului+5,+R%C3%A2mnicu+V%C3%A2lcea/@45.1101748,24.3647575,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="foot-link text-[17px] text-white"
+              >
+                Strada Bujorului 5, Râmnicu Vâlcea
+              </a>
+            </div>
+            <div>
+              <div className="font-mono text-[11px] tracking-[0.18em] text-[#5A5A60] uppercase mb-[7px]">
+                Program
+              </div>
+              <div className="text-[17px] text-[#D6D6D8]">
+                Lun–Vin · 08:00–18:00
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Contact Form */}
-          <Card className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300">
-            <CardHeader className="pb-4">
-              <CardTitle className="text-xl font-bold text-chrome-white flex items-center gap-2">
-                <Send className="w-5 h-5 text-performance-red" />
-                Solicită Consultanță
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              {isSubmitted ? (
-                <div className="text-center py-6">
-                  <CheckCircle className="w-12 h-12 text-performance-red mx-auto mb-3" />
-                  <h3 className="text-lg font-semibold text-chrome-white mb-2">
-                    Mesajul a fost trimis!
-                  </h3>
-                  <p className="text-steel-gray mb-3">
-                    Mulțumim pentru solicitare. Vom reveni în cel mai scurt timp.
-                  </p>
-                  <Button 
-                    onClick={() => setIsSubmitted(false)}
-                    variant="outline"
-                    size="sm"
-                    className="border-performance-red text-performance-red hover:bg-performance-red hover:text-chrome-white"
-                  >
-                    Trimite alt mesaj
-                  </Button>
+        <div className="relative border border-white/10 bg-demo-surface px-6 py-10 md:px-10 md:py-11">
+          <div className="absolute top-0 left-0 w-20 h-1 bg-demo-accent" />
+          {submitted ? (
+            <div className="min-h-[420px] flex flex-col items-center justify-center text-center gap-4 animate-popin">
+              <div className="w-14 h-14 rounded-full border-2 border-demo-accent text-demo-accent flex items-center justify-center text-[26px]">
+                ✓
+              </div>
+              <div className="font-display font-semibold text-[28px] uppercase">
+                Mesaj trimis
+              </div>
+              <p className="text-[15px] text-demo-muted max-w-[300px]">
+                Mulțumim — am primit detaliile și revenim în curând.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-[22px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[22px]">
+                <div>
+                  <label className="font-mono text-[11px] tracking-[0.14em] text-demo-dim uppercase block mb-[9px]">
+                    Nume
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Numele tău"
+                    className={fieldClass}
+                    value={form.name}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, name: e.target.value }))
+                    }
+                  />
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-steel-gray mb-2">
-                        Nume *
-                      </label>
-                      <Input 
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        placeholder="Numele tău"
-                        className="bg-background border-carbon-gray focus:border-performance-red focus:ring-performance-red/20 transition-all duration-300"
-                        required
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-steel-gray mb-2">
-                        Email *
-                      </label>
-                      <Input 
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        placeholder="email@exemplu.com"
-                        className="bg-background border-carbon-gray focus:border-performance-red focus:ring-performance-red/20 transition-all duration-300"
-                        required
-                        disabled={isSubmitting}
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-steel-gray mb-2">
-                      Telefon
-                    </label>
-                    <Input 
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      placeholder="+40 722 123 456"
-                      className="bg-background border-carbon-gray focus:border-performance-red focus:ring-performance-red/20 transition-all duration-300"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-steel-gray mb-2">
-                      Vehicul
-                    </label>
-                    <Input 
-                      name="vehicle"
-                      value={formData.vehicle}
-                      onChange={handleInputChange}
-                      placeholder="Marca, Model, An"
-                      className="bg-background border-carbon-gray focus:border-performance-red focus:ring-performance-red/20 transition-all duration-300"
-                      disabled={isSubmitting}
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-steel-gray mb-2">
-                      Mesaj *
-                    </label>
-                    <Textarea 
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Descrie ce modificări dorești..."
-                      className="bg-background border-carbon-gray focus:border-performance-red focus:ring-performance-red/20 transition-all duration-300 min-h-[100px] resize-none"
-                      required
-                      disabled={isSubmitting}
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    variant="performance" 
-                    size="lg" 
-                    className="w-full group"
-                    disabled={isSubmitting}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-4 h-4 border-2 border-chrome-white border-t-transparent rounded-full animate-spin" />
-                        Se trimite...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                        Trimite Solicitarea
-                      </>
-                    )}
-                  </Button>
-                </form>
-              )}
-            </CardContent>
-          </Card>
+                <div>
+                  <label className="font-mono text-[11px] tracking-[0.14em] text-demo-dim uppercase block mb-[9px]">
+                    Email
+                  </label>
+                  <input
+                    required
+                    type="email"
+                    placeholder="tu@email.com"
+                    className={fieldClass}
+                    value={form.email}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, email: e.target.value }))
+                    }
+                  />
+                </div>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-[22px]">
+                <div>
+                  <label className="font-mono text-[11px] tracking-[0.14em] text-demo-dim uppercase block mb-[9px]">
+                    Telefon
+                  </label>
+                  <input
+                    type="tel"
+                    placeholder="+40 712 345 678"
+                    className={fieldClass}
+                    value={form.phone}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, phone: e.target.value }))
+                    }
+                  />
+                </div>
+                <div>
+                  <label className="font-mono text-[11px] tracking-[0.14em] text-demo-dim uppercase block mb-[9px]">
+                    Vehicul / Platformă
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="ex. BMW E46 M3"
+                    className={fieldClass}
+                    value={form.vehicle}
+                    onChange={(e) =>
+                      setForm((f) => ({ ...f, vehicle: e.target.value }))
+                    }
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="font-mono text-[11px] tracking-[0.14em] text-demo-dim uppercase block mb-[9px]">
+                  Obiective / comandă
+                </label>
+                <textarea
+                  rows={5}
+                  placeholder="Țintă de putere, stradă sau circuit, termen, buget… sau adaugă piese în coș și apasă Finalizează ca să le aduci aici."
+                  className={`${fieldClass} resize-y`}
+                  value={goals}
+                  onChange={(e) => setGoals(e.target.value)}
+                />
+              </div>
+              <button
+                type="submit"
+                className="btn-fill self-start bg-demo-accent text-white font-semibold text-[15px] px-8 py-[15px] border-0 cursor-pointer"
+              >
+                Trimite mesajul
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>

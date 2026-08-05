@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
+import { CartProvider } from "@/context/CartContext";
 import Index from "./pages/Index";
 import Kits from "./pages/Kits";
 import KitDetails from "./pages/KitDetails";
@@ -13,10 +14,10 @@ import OptimizareAerodinamica from "./pages/Services/OptimizareAerodinamica";
 import MentenantaSpecializata from "./pages/Services/MentenantaSpecializata";
 import CeModificariPotFace from "./pages/Blog/CeModificariPotFace";
 import Top5ModificariPerformanta from "./pages/Blog/Top5ModificariPerformanta";
-import ComingSoon from "./pages/ComingSoon";
 import NotFound from "./pages/NotFound";
 import Analytics from "./components/Analytics";
-import { Analytics as VercelAnalytics } from "@vercel/analytics/react"
+import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
+import CartDrawer from "@/components/CartDrawer";
 
 const queryClient = new QueryClient();
 
@@ -27,22 +28,23 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Analytics />
-          <VercelAnalytics />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/piese" element={<Kits />} />
-            <Route path="/piese/kit-admisie" element={<KitDetails />} />
-            <Route path="/servicii/modificari-hardware" element={<ModificariHardware />} />
-            <Route path="/servicii/suspensie-sport" element={<SuspensieSport />} />
-            <Route path="/servicii/optimizare-aerodinamica" element={<OptimizareAerodinamica />} />
-            <Route path="/servicii/mentenanta-specializata" element={<MentenantaSpecializata />} />
-            <Route path="/blog/ce-modificari-pot-face" element={<CeModificariPotFace />} />
-            <Route path="/blog/top-5-modificari-performanta" element={<Top5ModificariPerformanta />} />
-            {/* <Route path="/coming-soon" element={<ComingSoon />} /> */}
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+          <CartProvider>
+            <Analytics />
+            <VercelAnalytics />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/piese" element={<Kits />} />
+              <Route path="/piese/kit-admisie" element={<KitDetails />} />
+              <Route path="/servicii/modificari-hardware" element={<ModificariHardware />} />
+              <Route path="/servicii/suspensie-sport" element={<SuspensieSport />} />
+              <Route path="/servicii/optimizare-aerodinamica" element={<OptimizareAerodinamica />} />
+              <Route path="/servicii/mentenanta-specializata" element={<MentenantaSpecializata />} />
+              <Route path="/blog/ce-modificari-pot-face" element={<CeModificariPotFace />} />
+              <Route path="/blog/top-5-modificari-performanta" element={<Top5ModificariPerformanta />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <CartDrawer />
+          </CartProvider>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

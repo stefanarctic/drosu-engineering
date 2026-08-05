@@ -2,97 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* DROSU demo design system — colors in HSL */
 
 @layer base {
   :root {
-    /* Pure black automotive theme matching hero section */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 96%;
+    --background: 240 5% 5%; /* #0B0B0C */
+    --foreground: 0 0% 100%;
 
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 96%;
+    --card: 240 6% 6%; /* #101012 */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 96%;
+    --popover: 240 7% 5%; /* #0d0d0f */
+    --popover-foreground: 0 0% 100%;
 
-    /* Performance red accent - inspired by racing */
-    --primary: 0 84% 58%;
-    --primary-foreground: 0 0% 96%;
+    /* Accent red #E10600 */
+    --primary: 2 100% 44%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
+    --secondary: 240 5% 10%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 64%;
+    --muted: 240 5% 10%;
+    --muted-foreground: 240 3% 60%; /* #9A9AA0 */
 
-    /* Orange accent for highlights */
-    --accent: 25 95% 58%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 2 100% 44%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 96%;
 
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 84% 58%;
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.16;
+    --ring: 2 100% 44%;
 
-    --radius: 0.5rem;
+    --radius: 0;
 
-    /* Custom design tokens for automotive theme */
-    --performance-red: 0 84% 58%;
+    --performance-red: 2 100% 44%;
     --performance-orange: 25 95% 58%;
     --performance-blue: 217 91% 60%;
-    --carbon-black: 0 0% 0%;
-    --carbon-gray: 0 0% 14%;
-    --steel-gray: 0 0% 64%;
-    --chrome-white: 0 0% 96%;
+    --carbon-black: 240 5% 5%;
+    --carbon-gray: 240 5% 8%;
+    --steel-gray: 240 3% 60%;
+    --chrome-white: 0 0% 100%;
 
-    /* Gradients */
+    --demo-muted: 240 2% 55%; /* #8B8B90 */
+    --demo-surface: 240 6% 6%; /* #101012 */
+    --demo-deep: 240 8% 2%; /* #060607 */
+
     --gradient-primary: linear-gradient(135deg, hsl(var(--performance-red)), hsl(var(--performance-orange)));
     --gradient-card: linear-gradient(135deg, hsl(var(--card)), hsl(var(--carbon-gray)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--carbon-black)), hsl(var(--carbon-gray)));
 
-    /* Shadows */
     --shadow-performance: 0 10px 30px -10px hsl(var(--performance-red) / 0.3);
     --shadow-card: 0 4px 20px -4px hsl(var(--carbon-black) / 0.5);
     --shadow-glow: 0 0 40px hsl(var(--performance-red) / 0.4);
 
-    /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 96%;
-
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 96%;
-
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 96%;
-
-    --primary: 0 84% 58%;
-    --primary-foreground: 0 0% 96%;
-
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
-
-    --muted: 0 0% 12%;
-    --muted-foreground: 0 0% 64%;
-
-    --accent: 25 95% 58%;
-    --accent-foreground: 0 0% 0%;
-
+    --background: 240 5% 5%;
+    --foreground: 0 0% 100%;
+    --card: 240 6% 6%;
+    --card-foreground: 0 0% 100%;
+    --popover: 240 7% 5%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 2 100% 44%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 240 5% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 240 5% 10%;
+    --muted-foreground: 240 3% 60%;
+    --accent: 2 100% 44%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 96%;
-
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-    --ring: 0 84% 58%;
+    --border: 0 0% 100% / 0.1;
+    --input: 0 0% 100% / 0.16;
+    --ring: 2 100% 44%;
   }
 }
 
@@ -101,12 +89,155 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-family: "Archivo", system-ui, sans-serif;
+  }
+
+  ::selection {
+    background: #e10600;
+    color: #fff;
   }
 }
 
-/* Custom gradient classes */
+@layer components {
+  .font-display {
+    font-family: "Oswald", system-ui, sans-serif;
+  }
+
+  .font-mono-label {
+    font-family: "Space Mono", ui-monospace, monospace;
+  }
+
+  .nav-link {
+    @apply relative transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -6px;
+    height: 1px;
+    background: #e10600;
+    transition: right 0.25s;
+  }
+
+  .nav-link:hover::after {
+    right: 0;
+  }
+
+  .btn-fill {
+    @apply inline-flex items-center justify-center transition-all duration-150;
+  }
+
+  .btn-fill:hover {
+    transform: translateY(-2px);
+  }
+
+  .btn-out {
+    @apply inline-flex items-center justify-center border transition-all duration-200;
+  }
+
+  .btn-out:hover {
+    border-color: #fff !important;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .svc:hover {
+    background: rgba(255, 255, 255, 0.03) !important;
+  }
+
+  .svc:hover .svc-bar {
+    width: 100% !important;
+  }
+
+  .card-do {
+    @apply transition-all duration-200;
+  }
+
+  .card-do:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.22) !important;
+  }
+
+  .prod {
+    @apply transition-all duration-200 cursor-pointer;
+  }
+
+  .prod:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.22);
+  }
+
+  .add-btn {
+    @apply transition-all duration-200;
+  }
+
+  .add-btn:hover {
+    background: #e10600 !important;
+    color: #fff !important;
+  }
+
+  .fld:focus {
+    border-color: #e10600 !important;
+    outline: none;
+  }
+
+  .fld::placeholder {
+    color: #5a5a60;
+  }
+
+  .shop-chip {
+    padding: 9px 16px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    color: #8b8b90;
+    cursor: pointer;
+    font-family: "Space Mono", ui-monospace, monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .shop-chip:hover {
+    color: #fff;
+  }
+
+  .shop-chip.active {
+    border: 1px solid #e10600;
+    color: #fff;
+  }
+
+  .foot-link {
+    @apply transition-colors duration-200;
+  }
+
+  .foot-link:hover {
+    color: #fff !important;
+  }
+}
+
+@keyframes popin {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-popin {
+  animation: popin 0.28s ease-out;
+}
+
 .bg-gradient-primary {
   background: var(--gradient-primary);
 }

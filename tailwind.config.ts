@@ -18,7 +18,20 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Archivo', 'system-ui', 'sans-serif'],
+				display: ['Oswald', 'system-ui', 'sans-serif'],
+				mono: ['Space Mono', 'ui-monospace', 'monospace'],
+			},
 			colors: {
+				demo: {
+					bg: '#0B0B0C',
+					surface: '#101012',
+					deep: '#060607',
+					muted: '#9A9AA0',
+					dim: '#8B8B90',
+					accent: '#E10600',
+				},
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

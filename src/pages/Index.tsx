@@ -1,53 +1,63 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import ComingSoon from "@/components/ComingSoon";
+import Capabilities from "@/components/Capabilities";
 import Services from "@/components/Services";
-import PerformanceParts from "@/components/PerformanceParts";
-import About from "@/components/About";
-import Blog from "@/components/Blog";
+import Process from "@/components/Process";
+import Shop from "@/components/Shop";
+import Videos from "@/components/Videos";
+import CtaBand from "@/components/CtaBand";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import ProductDetailModal from "@/components/ProductDetailModal";
 import SEO from "@/components/SEO";
 
 const Index = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Handle scroll to section when page loads with hash
     if (location.hash) {
-      const targetId = location.hash.replace('#', '');
-      // Wait for page to render, then scroll
+      const targetId = location.hash.replace("#", "");
       setTimeout(() => {
-        const element = document.getElementById(targetId);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.getElementById(targetId)?.scrollIntoView({
+          behavior: "smooth",
+        });
       }, 100);
     }
   }, [location.hash]);
 
   return (
-    <div className="min-h-screen bg-background">
-      <SEO 
+    <div className="min-h-screen bg-demo-bg text-white">
+      <SEO
         title="DROSU Engineering - Atelier Performanță Auto Râmnicu Vâlcea | Modificări Hardware Mașini Strada & Curse"
         description="Specialiști în modificări hardware pentru mașini de strada și de curse în Râmnicu Vâlcea, Județul Vâlcea. Cu 3 ani de experiență în motorsport, oferim servicii de calitate superioară. Consultanță gratuită."
         keywords="modificări performanță mașini strada, modificări performanță mașini curse, tuning auto hardware, atelier performanță râmnicu vâlcea, drosu engineering valcea"
         image="https://www.drosuengineering.com/src/assets/workshop-interior.jpg"
         url="https://www.drosuengineering.com"
-        tags={["performanță auto", "tuning", "tuning hardware", "mașini strada", "mașini curse", "modificări auto"]}
+        tags={[
+          "performanță auto",
+          "tuning",
+          "tuning hardware",
+          "mașini strada",
+          "mașini curse",
+          "modificări auto",
+        ]}
         isLocalBusiness={true}
       />
+      <AnnouncementBar />
       <Header />
       <Hero />
-      <ComingSoon />
-      {/* <Services /> */}
-      {/* <PerformanceParts /> */}
-      {/* <About /> */}
-      {/* <Blog /> */}
+      <Capabilities />
+      <Services />
+      <Process />
+      <Shop />
+      <Videos />
+      <CtaBand />
       <Contact />
-      {/* <Footer /> */}
+      <Footer />
+      <ProductDetailModal />
     </div>
   );
 };
