@@ -1,70 +1,78 @@
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import SEO from "@/components/SEO";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight, CheckCircle, Zap, Wrench } from "lucide-react";
-import { Link } from "react-router-dom";
-import { useEffect } from "react";
+
+const modificari = [
+  {
+    title: "Kit Admisie Sport",
+    description:
+      "Îmbunătățește fluxul de aer către motor, rezultând în răspuns mai rapid și putere sporită.",
+    benefits: ["Răspuns mai rapid", "Putere crescută", "Sunet sport"],
+  },
+  {
+    title: "Sistem Evacuare Sport",
+    description:
+      "Reduce rezistența la evacuarea gazelor, îmbunătățind performanța și oferind sunet distinctiv.",
+    benefits: ["Performanță crescută", "Sunet sport", "Consum optimizat"],
+  },
+  {
+    title: "Suspensie Sport",
+    description:
+      "Arcuri și amortizoare sport pentru handling superior și stabilitate la viteze înalte.",
+    benefits: ["Handling îmbunătățit", "Stabilitate crescută", "Confort optimizat"],
+  },
+  {
+    title: "Intercooler Performant",
+    description:
+      "Răcește aerul de admisie mai eficient, rezultând în putere și eficiență sporite.",
+    benefits: ["Putere crescută", "Eficiență îmbunătățită", "Fiabilitate"],
+  },
+  {
+    title: "Upgrade Turbo",
+    description:
+      "Turbocompresor mai mare sau optimizat pentru putere semnificativ crescută.",
+    benefits: ["Putere mult crescută", "Răspuns îmbunătățit", "Performanță superioară"],
+  },
+];
+
+const faqItems = [
+  {
+    question: "Ce modificări pot face la mașina mea?",
+    answer:
+      "Poți face diverse modificări precum kit admisie sport, sisteme de evacuare, suspensie sport, intercooler performant, upgrade-uri turbo și multe altele. Fiecare modificare aduce beneficii specifice pentru performanță, handling sau sunet.",
+  },
+  {
+    question: "Modificările afectează consumul de combustibil?",
+    answer:
+      "Depinde de tipul modificărilor. Unele modificări pot îmbunătăți eficiența (precum kit admisie optimizat), în timp ce altele pot crește consumul (precum upgrade-uri turbo agresive). Consultanța noastră te ajută să alegi modificări echilibrate.",
+  },
+  {
+    question: "Cât costă modificările de performanță?",
+    answer:
+      "Prețurile variază de la 450 RON pentru un kit admisie simplu până la mii de RON pentru modificări complexe. Oferim consultanță gratuită pentru a determina ce modificări sunt potrivite pentru bugetul tău.",
+  },
+  {
+    question: "Modificările sunt legale în România?",
+    answer:
+      "Majoritatea modificărilor sunt legale dacă respectă normele RAR și trec ITP-ul. Te ajutăm să alegi modificări conforme cu legislația română și să obții aprobările necesare.",
+  },
+];
+
+const publishedDate = "2024-01-15";
+const modifiedDate = "2024-01-15";
 
 const CeModificariPotFace = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const modificari = [
-    {
-      title: "Kit Admisie Sport",
-      description: "Îmbunătățește fluxul de aer către motor, rezultând în răspuns mai rapid și putere sporită.",
-      benefits: ["Răspuns mai rapid", "Putere crescută", "Sunet sport"]
-    },
-    {
-      title: "Sistem Evacuare Sport",
-      description: "Reduce rezistența la evacuarea gazelor, îmbunătățind performanța și oferind sunet distinctiv.",
-      benefits: ["Performanță crescută", "Sunet sport", "Consum optimizat"]
-    },
-    {
-      title: "Suspensie Sport",
-      description: "Arcuri și amortizoare sport pentru handling superior și stabilitate la viteze înalte.",
-      benefits: ["Handling îmbunătățit", "Stabilitate crescută", "Confort optimizat"]
-    },
-    {
-      title: "Intercooler Performant",
-      description: "Răcește aerul de admisie mai eficient, rezultând în putere și eficiență sporite.",
-      benefits: ["Putere crescută", "Eficiență îmbunătățită", "Fiabilitate"]
-    },
-    {
-      title: "Upgrade Turbo",
-      description: "Turbocompresor mai mare sau optimizat pentru putere semnificativ crescută.",
-      benefits: ["Putere mult crescută", "Răspuns îmbunătățit", "Performanță superioară"]
-    }
-  ];
-
-  const faqItems = [
-    {
-      question: "Ce modificări pot face la mașina mea?",
-      answer: "Poți face diverse modificări precum kit admisie sport, sisteme de evacuare, suspensie sport, intercooler performant, upgrade-uri turbo și multe altele. Fiecare modificare aduce beneficii specifice pentru performanță, handling sau sunet."
-    },
-    {
-      question: "Modificările afectează consumul de combustibil?",
-      answer: "Depinde de tipul modificărilor. Unele modificări pot îmbunătăți eficiența (precum kit admisie optimizat), în timp ce altele pot crește consumul (precum upgrade-uri turbo agresive). Consultanța noastră te ajută să alegi modificări echilibrate."
-    },
-    {
-      question: "Cât costă modificările de performanță?",
-      answer: "Prețurile variază de la 450 RON pentru un kit admisie simplu până la mii de RON pentru modificări complexe. Oferim consultanță gratuită pentru a determina ce modificări sunt potrivite pentru bugetul tău."
-    },
-    {
-      question: "Modificările sunt legale în România?",
-      answer: "Majoritatea modificărilor sunt legale dacă respectă normele RAR și trec ITP-ul. Te ajutăm să alegi modificări conforme cu legislația română și să obții aprobările necesare."
-    }
-  ];
-
-  const publishedDate = "2024-01-15";
-  const modifiedDate = "2024-01-15";
-
   return (
-    <div className="min-h-screen bg-background">
-      <SEO 
+    <div className="min-h-screen bg-demo-bg text-white">
+      <SEO
         title="Ce Modificări Poți Face la Mașina Ta - Ghid Complet 2024 | DROSU Engineering"
         description="Ghid complet despre modificările de performanță pe care le poți face la mașina ta: kit admisie, evacuare sport, suspensie, intercooler și multe altele. Consultanță gratuită în Râmnicu Vâlcea."
         keywords="ce modificări pot face la mașina mea, modificări performanță auto, ghid modificări mașină, ce piese pot pune la mașina mea, modificări legale mașină românia"
@@ -77,187 +85,197 @@ const CeModificariPotFace = () => {
         tags={["modificări performanță", "ghid auto", "tuning", "piese performanță"]}
         faqSchema={faqItems}
         breadcrumbs={[
-          { name: "Blog", url: "/blog" },
-          { name: "Ce Modificări Pot Face", url: "/blog/ce-modificari-pot-face" }
+          { name: "Blog", url: "/#blog" },
+          { name: "Ce Modificări Pot Face", url: "/blog/ce-modificari-pot-face" },
         ]}
         isLocalBusiness={false}
       />
+      <AnnouncementBar />
       <Header />
 
-      <main className="pt-28 pb-20">
-        <div className="container mx-auto px-6 max-w-4xl">
-          <Breadcrumbs 
-            items={[
-              { name: "Blog", url: "/blog" },
-              { name: "Ce Modificări Pot Face", url: "/blog/ce-modificari-pot-face" }
-            ]} 
-          />
+      <main className="max-w-[800px] mx-auto px-5 md:px-10 pt-12 pb-20 md:pb-[110px]">
+        <Breadcrumbs
+          items={[
+            { name: "Blog", url: "/#blog" },
+            { name: "Ce Modificări Pot Face", url: "/blog/ce-modificari-pot-face" },
+          ]}
+        />
 
-          {/* Article Header */}
-          <article>
-            <div className="mb-8">
-              <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
-                Ghid Auto
-              </span>
-              <h1 className="text-4xl md:text-5xl font-bold text-chrome-white mb-4">
-                Ce Modificări Poți Face la Mașina Ta - Ghid Complet 2024
-              </h1>
-              <p className="text-xl text-steel-gray mb-6">
-                Descoperă cele mai populare modificări de performanță pe care le poți face la mașina ta și cum te pot ajuta să obții rezultatele dorite.
-              </p>
-              <div className="flex items-center gap-4 text-steel-gray text-sm">
-                <span>Publicat: {new Date(publishedDate).toLocaleDateString('ro-RO')}</span>
-                <span>•</span>
-                <span>DROSU Engineering</span>
-              </div>
-            </div>
+        <article>
+          <div className="font-mono text-[12px] tracking-[0.28em] text-demo-accent uppercase mb-4">
+            Ghid Auto
+          </div>
+          <h1 className="font-display font-bold text-[36px] md:text-[48px] uppercase leading-[1.05] mb-5">
+            Ce Modificări Poți Face la Mașina Ta — Ghid Complet
+          </h1>
+          <p className="text-lg leading-relaxed text-demo-muted mb-6">
+            Descoperă cele mai populare modificări de performanță pe care le
+            poți face la mașina ta și cum te pot ajuta să obții rezultatele
+            dorite.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 text-sm text-demo-dim font-mono tracking-wide mb-12">
+            <span>
+              Publicat:{" "}
+              {new Date(publishedDate).toLocaleDateString("ro-RO")}
+            </span>
+            <span className="text-white/20">·</span>
+            <span>DROSU Engineering</span>
+          </div>
 
-            {/* Featured Answer for Snippet */}
-            <div className="bg-card border-l-4 border-performance-red p-6 mb-8 rounded-r-lg">
-              <p className="text-lg text-chrome-white">
-                <strong>Răspuns scurt:</strong> Poți face diverse modificări de performanță la mașina ta, 
-                inclusiv kit admisie sport, sisteme de evacuare, suspensie sport, intercooler performant și upgrade-uri turbo. 
-                Fiecare modificare aduce beneficii specifice pentru performanță, handling sau sunet. 
-                Recomandăm consultanță profesională pentru a alege modificările potrivite pentru vehiculul tău.
-              </p>
-            </div>
+          <div className="border-l-2 border-demo-accent bg-demo-surface p-6 mb-12">
+            <p className="text-[17px] leading-relaxed text-demo-muted">
+              <span className="text-white font-semibold">Răspuns scurt:</span>{" "}
+              Poți face diverse modificări de performanță la mașina ta, inclusiv
+              kit admisie sport, sisteme de evacuare, suspensie sport,
+              intercooler performant și upgrade-uri turbo. Fiecare modificare
+              aduce beneficii specifice pentru performanță, handling sau sunet.
+              Recomandăm consultanță profesională pentru a alege modificările
+              potrivite pentru vehiculul tău.
+            </p>
+          </div>
 
-            {/* Main Content */}
-            <div className="prose prose-invert max-w-none mb-12">
-              <p className="text-steel-gray text-lg mb-6">
-                Dacă ești pasionat de performanță auto și vrei să îți îmbunătățești mașina, 
-                există multe modificări pe care le poți face. În acest ghid complet, 
-                explorăm cele mai populare modificări de performanță disponibile pentru mașinile de strada și de curse.
-              </p>
+          <p className="text-[17px] leading-relaxed text-demo-muted mb-12">
+            Dacă ești pasionat de performanță auto și vrei să îți îmbunătățești
+            mașina, există multe modificări pe care le poți face. În acest ghid
+            complet, explorăm cele mai populare modificări de performanță
+            disponibile pentru mașinile de strada și de curse.
+          </p>
 
-              <h2 className="text-3xl font-bold text-chrome-white mt-12 mb-6">
-                Top 5 Modificări de Performanță pentru Mașina Ta
-              </h2>
+          <h2 className="font-display font-bold text-[28px] md:text-[34px] uppercase leading-none mb-8">
+            Top 5 Modificări de Performanță
+          </h2>
 
-              <div className="space-y-8 mb-12">
-                {modificari.map((modificare, index) => (
-                  <div key={index} className="bg-card border border-carbon-gray rounded-lg p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="w-12 h-12 bg-gradient-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-chrome-white font-bold text-xl">{index + 1}</span>
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-2xl font-bold text-chrome-white mb-3">
-                          {modificare.title}
-                        </h3>
-                        <p className="text-steel-gray mb-4">
-                          {modificare.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {modificare.benefits.map((benefit, idx) => (
-                            <span 
-                              key={idx}
-                              className="inline-flex items-center gap-1 px-3 py-1 bg-performance-red/20 text-performance-red rounded-full text-sm"
-                            >
-                              <CheckCircle className="w-4 h-4" />
-                              {benefit}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+          <div className="space-y-5 mb-14">
+            {modificari.map((modificare, index) => (
+              <div
+                key={modificare.title}
+                className="border border-white/10 bg-demo-surface p-6 md:p-8"
+              >
+                <div className="flex items-start gap-5">
+                  <span className="font-mono text-[13px] text-demo-accent shrink-0 pt-1">
+                    0{index + 1}
+                  </span>
+                  <div>
+                    <h3 className="font-display font-semibold text-[22px] uppercase mb-2">
+                      {modificare.title}
+                    </h3>
+                    <p className="text-[15px] leading-relaxed text-demo-dim mb-4">
+                      {modificare.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {modificare.benefits.map((benefit) => (
+                        <span
+                          key={benefit}
+                          className="font-mono text-[11px] tracking-[0.08em] uppercase text-demo-muted border border-white/10 px-3 py-1.5"
+                        >
+                          {benefit}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
-
-              <h2 className="text-3xl font-bold text-chrome-white mt-12 mb-6">
-                Cum Să Alegi Modificările Potrivite
-              </h2>
-              <p className="text-steel-gray mb-4">
-                Alegerea modificărilor potrivite depinde de mai mulți factori:
-              </p>
-              <ul className="list-none space-y-3 mb-8">
-                <li className="flex items-start">
-                  <Zap className="w-5 h-5 text-performance-red mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-steel-gray"><strong>Obiectivul tău:</strong> Vrei mai multă putere, handling mai bun, sau sunet mai sport?</span>
-                </li>
-                <li className="flex items-start">
-                  <Wrench className="w-5 h-5 text-performance-red mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-steel-gray"><strong>Bugetul disponibil:</strong> Modificările variază de la câteva sute la mii de RON.</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-performance-red mr-3 mt-1 flex-shrink-0" />
-                  <span className="text-steel-gray"><strong>Legalitatea:</strong> Asigură-te că modificările respectă normele RAR și trec ITP-ul.</span>
-                </li>
-              </ul>
-
-              <h2 className="text-3xl font-bold text-chrome-white mt-12 mb-6">
-                De Ce Să Alegi DROSU Engineering
-              </h2>
-              <p className="text-steel-gray mb-6">
-                La DROSU Engineering din Râmnicu Vâlcea, oferim consultanță gratuită pentru a te ajuta 
-                să alegi modificările potrivite pentru mașina ta. Cu experiență în motorsport și 
-                atenție la detalii, transformăm fiecare vehicul într-o mașină de performanță.
-              </p>
-            </div>
-
-            {/* FAQ Section */}
-            <div className="bg-card border border-carbon-gray rounded-lg p-8 mb-12">
-              <h2 className="text-2xl font-bold text-chrome-white mb-6">
-                Întrebări Frecvente
-              </h2>
-              <div className="space-y-6">
-                {faqItems.map((faq, index) => (
-                  <div key={index}>
-                    <h3 className="text-lg font-semibold text-chrome-white mb-2">
-                      {faq.question}
-                    </h3>
-                    <p className="text-steel-gray">
-                      {faq.answer}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* CTA */}
-            <div className="bg-gradient-to-r from-performance-red/20 to-performance-orange/20 border border-performance-red rounded-lg p-8 text-center">
-              <h3 className="text-2xl font-bold text-chrome-white mb-4">
-                Gata să îți Modifici Mașina?
-              </h3>
-              <p className="text-steel-gray mb-6">
-                Contactează-ne pentru o consultanță gratuită și să afli ce modificări sunt potrivite pentru vehiculul tău.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button 
-                  variant="performance" 
-                  size="xl"
-                  onClick={() => {
-                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  Solicită Consultanță Gratuită
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="xl" asChild>
-                  <Link to="/#services">
-                    Vezi Serviciile Noastre
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </article>
-
-          {/* Navigation */}
-          <div className="mt-12 flex justify-between items-center pt-8 border-t border-carbon-gray">
-            <Button variant="outline" asChild>
-              <Link to="/#services">
-                <ArrowLeft className="mr-2 h-4 w-4" />
-                Înapoi la Servicii
-              </Link>
-            </Button>
-            <Button variant="outline" onClick={() => {
-              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-            }}>
-              Contactează-ne
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
+            ))}
           </div>
+
+          <h2 className="font-display font-bold text-[28px] md:text-[34px] uppercase leading-none mb-6">
+            Cum Să Alegi Modificările Potrivite
+          </h2>
+          <p className="text-[17px] leading-relaxed text-demo-muted mb-5">
+            Alegerea modificărilor potrivite depinde de mai mulți factori:
+          </p>
+          <ul className="space-y-4 mb-14 text-[16px] leading-relaxed text-demo-muted">
+            <li className="flex gap-3">
+              <span className="text-demo-accent shrink-0">→</span>
+              <span>
+                <span className="text-white font-medium">Obiectivul tău:</span>{" "}
+                Vrei mai multă putere, handling mai bun, sau sunet mai sport?
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-demo-accent shrink-0">→</span>
+              <span>
+                <span className="text-white font-medium">Bugetul disponibil:</span>{" "}
+                Modificările variază de la câteva sute la mii de RON.
+              </span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-demo-accent shrink-0">→</span>
+              <span>
+                <span className="text-white font-medium">Legalitatea:</span>{" "}
+                Asigură-te că modificările respectă normele RAR și trec ITP-ul.
+              </span>
+            </li>
+          </ul>
+
+          <h2 className="font-display font-bold text-[28px] md:text-[34px] uppercase leading-none mb-6">
+            De Ce Să Alegi DROSU Engineering
+          </h2>
+          <p className="text-[17px] leading-relaxed text-demo-muted mb-14">
+            La DROSU Engineering din Râmnicu Vâlcea, oferim consultanță gratuită
+            pentru a te ajuta să alegi modificările potrivite pentru mașina ta.
+            Cu experiență în motorsport și atenție la detalii, transformăm fiecare
+            vehicul într-o mașină de performanță.
+          </p>
+
+          <h2 className="font-display font-bold text-[28px] md:text-[34px] uppercase leading-none mb-8">
+            Întrebări Frecvente
+          </h2>
+          <div className="space-y-4 mb-14">
+            {faqItems.map((faq) => (
+              <div
+                key={faq.question}
+                className="border border-white/10 bg-demo-surface p-6"
+              >
+                <h3 className="font-display font-semibold text-[18px] uppercase mb-2">
+                  {faq.question}
+                </h3>
+                <p className="text-[15px] leading-relaxed text-demo-dim">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="relative overflow-hidden border border-white/10 bg-demo-surface px-6 py-12 md:px-10 text-center">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80px] h-1 bg-demo-accent" />
+            <h3 className="font-display font-bold text-[28px] md:text-[34px] uppercase leading-none mb-4">
+              Gata să îți Modifici Mașina?
+            </h3>
+            <p className="text-demo-muted max-w-[440px] mx-auto mb-8 leading-relaxed">
+              Contactează-ne pentru o consultanță gratuită și află ce
+              modificări sunt potrivite pentru vehiculul tău.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
+              <Link
+                to="/#contact"
+                className="btn-fill bg-white text-demo-bg font-semibold text-[15px] px-8 py-[15px]"
+              >
+                Solicită Consultanță Gratuită
+              </Link>
+              <Link
+                to="/#services"
+                className="btn-out border border-white/30 text-white font-semibold text-[15px] px-8 py-[15px]"
+              >
+                Vezi Serviciile
+              </Link>
+            </div>
+          </div>
+        </article>
+
+        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-4 justify-between">
+          <Link
+            to="/#blog"
+            className="text-demo-muted hover:text-white transition-colors text-[15px]"
+          >
+            ← Înapoi la Blog
+          </Link>
+          <Link
+            to="/blog/top-5-modificari-performanta"
+            className="text-demo-muted hover:text-white transition-colors text-[15px]"
+          >
+            Top 5 Modificări →
+          </Link>
         </div>
       </main>
 

@@ -11,38 +11,35 @@ interface BreadcrumbsProps {
 }
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ items }) => {
-  const allItems = [
-    { name: "Acasă", url: "/" },
-    ...items
-  ];
+  const allItems = [{ name: "Acasă", url: "/" }, ...items];
 
   return (
-    <nav aria-label="Breadcrumb" className="mb-8">
-      <ol className="flex items-center space-x-2 text-sm text-steel-gray">
+    <nav aria-label="Breadcrumb" className="mb-10">
+      <ol className="flex flex-wrap items-center gap-y-1 text-sm text-demo-dim">
         {allItems.map((item, index) => {
           const isLast = index === allItems.length - 1;
-          
+
           return (
             <li key={index} className="flex items-center">
               {index === 0 ? (
-                <Link 
-                  to={item.url} 
-                  className="flex items-center hover:text-chrome-white transition-colors"
+                <Link
+                  to={item.url}
+                  className="flex items-center hover:text-white transition-colors"
                   aria-label="Acasă"
                 >
                   <Home className="w-4 h-4" />
                 </Link>
               ) : (
                 <>
-                  <ChevronRight className="w-4 h-4 mx-2 text-carbon-gray" />
+                  <ChevronRight className="w-4 h-4 mx-2 text-white/20" />
                   {isLast ? (
-                    <span className="text-chrome-white font-medium" aria-current="page">
+                    <span className="text-white font-medium" aria-current="page">
                       {item.name}
                     </span>
                   ) : (
-                    <Link 
-                      to={item.url} 
-                      className="hover:text-chrome-white transition-colors"
+                    <Link
+                      to={item.url}
+                      className="hover:text-white transition-colors"
                     >
                       {item.name}
                     </Link>

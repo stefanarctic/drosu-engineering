@@ -8,6 +8,7 @@ import Services from "@/components/Services";
 import Process from "@/components/Process";
 import Shop from "@/components/Shop";
 import Videos from "@/components/Videos";
+import Blog from "@/components/Blog";
 import CtaBand from "@/components/CtaBand";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -54,6 +55,7 @@ const Index = () => {
       <Process />
       <Shop />
       <Videos />
+      <Blog />
       <CtaBand />
       <Contact />
       <Footer />

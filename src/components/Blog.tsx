@@ -1,71 +1,70 @@
-import { ArrowRight, BookOpen, TrendingUp } from "lucide-react";
-import { Button } from "./ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { Link } from "react-router-dom";
 
+const blogPosts = [
+  {
+    num: "01",
+    title: "Top 5 Modificări Performanță",
+    description:
+      "Cele mai eficiente upgrade-uri pentru mașina ta — de la kit admisie la optimizare aerodinamică, cu prețuri și beneficii.",
+    link: "/blog/top-5-modificari-performanta",
+    date: "15 ian 2025",
+  },
+  {
+    num: "02",
+    title: "Ce Modificări Pot Face la Mașina Mea?",
+    description:
+      "Ghid complet despre modificările de performanță pentru stradă și curse — ce merită, ce e legal și cum alegi.",
+    link: "/blog/ce-modificari-pot-face",
+    date: "15 ian 2024",
+  },
+];
+
 const Blog = () => {
-  const blogPosts = [
-    {
-      title: "Top 5 Modificări Performanță",
-      description: "Descoperă cele mai eficiente 5 modificări de performanță pentru mașina ta. De la kit admisie la optimizare aerodinamică, găsește modificările perfecte.",
-      link: "/blog/top-5-modificari-performanta",
-      icon: <TrendingUp className="w-6 h-6" />
-    },
-    {
-      title: "Ce Modificări Pot Face la Mașina Mea?",
-      description: "Ghid complet despre modificările de performanță disponibile pentru mașinile de strada și curse. Află ce modificări sunt potrivite pentru automobilul tău.",
-      link: "/blog/ce-modificari-pot-face",
-      icon: <BookOpen className="w-6 h-6" />
-    }
-  ];
-
   return (
-    <section id="blog" className="py-20 bg-gradient-to-b from-background to-carbon-gray">
-      <div className="container mx-auto px-6 xl:max-w-[1320px] 2xl:max-w-[1500px]">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-performance-red/20 text-performance-red rounded-full text-sm font-semibold mb-4">
-            Blog & Ghiduri
-          </span>
-          <h2 className="text-4xl md:text-5xl font-bold text-chrome-white mb-6">
-            Ghiduri & Informații
-            <span className="text-performance-red"> Tuning Auto</span>
-          </h2>
-          <p className="text-xl text-steel-gray max-w-3xl mx-auto">
-            Află tot ce trebuie să știi despre modificările de performanță pentru mașinile tale. 
-            Ghiduri complete și informații utile despre tuning auto.
-          </p>
-        </div>
+    <section
+      id="blog"
+      className="max-w-[1280px] mx-auto px-5 md:px-10 py-20 md:py-[110px]"
+    >
+      <div className="font-mono text-[12px] tracking-[0.28em] text-demo-accent uppercase mb-4">
+        Blog & Ghiduri
+      </div>
+      <h2 className="font-display font-bold text-[36px] md:text-[52px] uppercase leading-[1.05] max-w-[640px]">
+        Ghiduri tuning auto
+      </h2>
+      <p className="max-w-[620px] mt-[22px] text-lg leading-relaxed text-demo-muted">
+        Informații clare despre modificări de performanță — ce merită, în ce
+        ordine și ce se potrivește mașinii tale.
+      </p>
 
-        <div className="grid grid-cols-1 place-items-center md:place-items-stretch md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post, index) => (
-            <Card key={index} className="bg-card border-carbon-gray hover:border-performance-red transition-all duration-300 hover:shadow-performance group w-full max-w-[420px] md:max-w-none flex flex-col h-full">
-              <CardHeader className="text-center md:text-left">
-                <div className="w-16 h-16 bg-gradient-primary rounded-lg flex items-center justify-center mb-4 group-hover:animate-glow mx-auto md:mx-0">
-                  {post.icon}
-                </div>
-                <CardTitle className="text-xl font-bold text-chrome-white mb-2">
-                  {post.title}
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col h-full text-center md:text-left">
-                <p className="text-steel-gray mb-6 flex-grow">
-                  {post.description}
-                </p>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
-                  className="text-performance-red hover:text-chrome-white group mt-auto"
-                  asChild
-                >
-                  <Link to={post.link}>
-                    Citește articolul
-                    <ArrowRight className="ml-1 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-14">
+        {blogPosts.map((post) => (
+          <Link
+            key={post.link}
+            to={post.link}
+            className="group border border-white/10 bg-demo-surface p-8 md:p-[38px_34px] flex flex-col transition-colors duration-200 hover:border-demo-accent/50"
+          >
+            <div className="flex items-center justify-between mb-5">
+              <span className="font-mono text-[13px] text-demo-accent">
+                {post.num}
+              </span>
+              <span className="font-mono text-[11px] tracking-[0.12em] text-demo-dim uppercase">
+                {post.date}
+              </span>
+            </div>
+            <h3 className="font-display font-semibold text-[24px] uppercase mb-3 group-hover:text-white transition-colors">
+              {post.title}
+            </h3>
+            <p className="text-[15px] leading-relaxed text-demo-dim flex-grow">
+              {post.description}
+            </p>
+            <span className="mt-8 inline-flex items-center gap-2 font-semibold text-[14px] text-white">
+              Citește articolul
+              <span className="transition-transform duration-200 group-hover:translate-x-1">
+                →
+              </span>
+            </span>
+          </Link>
+        ))}
       </div>
     </section>
   );

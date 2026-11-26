@@ -20,16 +20,19 @@ const Footer = () => {
             Navigare
           </div>
           <div className="flex flex-col gap-3 text-[15px] text-demo-muted">
-            <a href="#capabilities" className="foot-link">
+            <a href="/#capabilities" className="foot-link">
               Despre
             </a>
-            <a href="#services" className="foot-link">
+            <a href="/#services" className="foot-link">
               Servicii
             </a>
-            <a href="#shop" className="foot-link">
+            <a href="/#shop" className="foot-link">
               Shop
             </a>
-            <a href="#contact" className="foot-link">
+            <a href="/#blog" className="foot-link">
+              Blog
+            </a>
+            <a href="/#contact" className="foot-link">
               Contact
             </a>
           </div>
